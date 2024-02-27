@@ -1,0 +1,4 @@
+- remaining things from .zshrc.before-nix
+- remaining things from .zshenv.bak
+- anything from .zprofile
+- make p10k into dracula color scheme
