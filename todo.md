@@ -8,3 +8,4 @@
 - one day, tex compiler. h-m has texlive
 - email client? I only use web gmail right now
 - home.targets.darwin.currentHostDefaults
+- issue/pr adding pam\_reattach.so to /etc/pam.d/sudo

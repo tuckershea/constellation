@@ -9,7 +9,7 @@
     curl
     wget
   ] ++ lib.optionals stdenv.isDarwin [
-  
+    pam-reattach 
   ];
 
   home.shellAliases = {
@@ -194,7 +194,7 @@
   programs.thefuck = {
     enable = true;
     enableZshIntegration = true;
-    enableInstantMode = true;
+    # enableInstantMode = true;
   };
 
   # caffeine-ng not currently supported on macos
