@@ -2,3 +2,9 @@
 - remaining things from .zshenv.bak
 - anything from .zprofile
 - make p10k into dracula color scheme
+- look at jetbrains rds on servers
+- look at oh-my-posh or powerline-go
+- setup ssh. probably a nix/nix-darwin domain
+- one day, tex compiler. h-m has texlive
+- email client? I only use web gmail right now
+- home.targets.darwin.currentHostDefaults

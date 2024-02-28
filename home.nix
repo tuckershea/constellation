@@ -2,6 +2,8 @@
 {
   home.stateVersion = "23.11";
 
+  home.username = "tuckershea";
+
   home.packages = with pkgs; [
     coreutils
     curl
@@ -13,10 +15,13 @@
   home.shellAliases = {
     ".." = "cd ..";
     "~" = "cd ~";
-    "vi" = "nvim";
     "\"vi?\"" = "fzf --bind 'enter:become(nvim {})'";
     "\"cd?\"" = "cd \$(fd --type d --hidden --no-ignore | fzf)";
     "\"cd@\"" = "cd \$(fd --type f --hidden --no-ignore | fzf)";
+  };
+
+  home.sessionVariables = {
+    
   };
 
   programs.zsh = {
@@ -79,19 +84,11 @@
     clock24 = true;
     keyMode = "vi";
     mouse = true;
-    # prefix = "C-s"; Set by extraConfig
+    prefix = "C-s";
     historyLimit = 10000;
 
     extraConfig = lib.strings.concatLines [
       (builtins.readFile tmux-config/tmux.1.conf)
-      #(builtins.readFile tmux-config/tmux.2.conf)
-      #(builtins.readFile tmux-config/tmux.3.conf)
-      ''
-        unbind C-a
-        unbind C-b
-        set -g prefix C-s
-        bind C-s send-prefix
-      ''
     ];
 
     plugins = with pkgs; [
@@ -123,4 +120,85 @@
       }
     ];
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultCommand = "fd --type f --hidden --no-ignore";
+    fileWidgetCommand = "fd --type f --hidden --no-ignore";
+    # fileWidgetOptions = [ "--preview='head -200 {}'" ];
+    changeDirWidgetCommand = "fd --type d --hidden --no-ignore";
+    # changeDirWidgetOptions = [ "--preview='tree -C {} | head -200'" ];
+    # tmux.enableShellIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    delta.enable = true;
+    hooks = {
+      # pre-commit = ./pre-commit-script;
+    };
+    ignores = [
+      "*.swp"
+      ".DS_Store"
+      "._.DS_Store"
+      "**/.DS_Store"
+      "**/._.DS_Store"
+    ];
+    signing = {
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMh3wNTGjXPzrHWZI1ZZfoRg3w6osDeB1VUYSaRd5Dk9";
+      signByDefault = true;
+    };
+    userEmail = "tucker@tuckershea.com";
+    userName = "NoRePercussions";
+    extraConfig = {
+      gpg.format = "ssh";
+      core.autocrlf = "input";
+      init.defaultBranch = "main";
+      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+    };
+  };
+
+  programs.htop.enable = true;
+
+  programs.less.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+      # get some plugins
+    ];
+    viAlias = true;
+    vimAlias = true;
+  };
+
+  programs.pyenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.pylint.enable = true;
+
+  programs.rbenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.tealdeer = {
+    enable = true;
+    settings.updates.auto_update = true;
+  };
+
+  programs.thefuck = {
+    enable = true;
+    enableZshIntegration = true;
+    enableInstantMode = true;
+  };
+
+  # caffeine-ng not currently supported on macos
+  # will have to use brew keepingyouawake instead
+  # or look further into
+  # services.caffeine.enable = true;
 }
