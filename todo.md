@@ -9,3 +9,6 @@
 - email client? I only use web gmail right now
 - home.targets.darwin.currentHostDefaults
 - issue/pr adding pam\_reattach.so to /etc/pam.d/sudo
+- darwin: remap caps to esc
+- explore darwin
+- gnugrep as ggrep module

@@ -5,8 +5,15 @@
   home.username = "tuckershea";
 
   home.packages = with pkgs; [
+    cloc
     coreutils
     curl
+    fd
+    ffmpeg
+    neofetch
+    poetry
+    # pyenv below
+    # rbenv below
     wget
   ] ++ lib.optionals stdenv.isDarwin [
     pam-reattach 
@@ -168,6 +175,7 @@
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       vim-nix
+      dracula-nvim
       # get some plugins
     ];
     viAlias = true;
