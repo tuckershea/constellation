@@ -45,7 +45,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = lib.cleanSource ./p10k-config;
+        src = lib.cleanSource ./zsh;
         file = "p10k.zsh";
       }
     ];
@@ -95,7 +95,7 @@
     historyLimit = 10000;
 
     extraConfig = lib.strings.concatLines [
-      (builtins.readFile tmux-config/tmux.1.conf)
+      (builtins.readFile tmux/tmux.conf)
     ];
 
     plugins = with pkgs; [
@@ -143,7 +143,7 @@
     enable = true;
     delta.enable = true;
     hooks = {
-      # pre-commit = ./pre-commit-script;
+      # pre-commit = ./../pre-commit-script;
     };
     ignores = [
       "*.swp"

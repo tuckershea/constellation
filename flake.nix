@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "My infrastructure";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -18,6 +18,7 @@
     nixpkgsConfig = {
       config = { allowUnfree = true; };
     };
+
   in
   {
     darwinConfigurations."Tuckers-MacBook-Air" = darwinSystem {
@@ -26,11 +27,8 @@
       	./configuration.nix
         home-manager.darwinModules.home-manager {
           nixpkgs = nixpkgsConfig;
-          # `home-manager` config
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.tuckershea = import ./home.nix; 
-	}
+          home-manager.users.tuckershea = import ./home/tuckershea.nix; 
+        }
         ./hosts/Tuckers-MacBook-Air/default.nix
       ];
     };
