@@ -1,10 +1,8 @@
 { pkgs, lib, ... }:
 {
-  # Nix Configuration
-  # Inspired by https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050
-
   # Enable experimental nix command and flakes
   # nix.package = pkgs.nixUnstable;
+  # could be make like https://github.com/gvolpe/nix-config/blob/f4cae339b91a7cab7b4c0a1c3a72094750e7c02b/system/configuration.nix#L210
   nix.extraOptions = ''
     auto-optimise-store = true
     experimental-features = nix-command flakes

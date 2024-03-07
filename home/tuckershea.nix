@@ -2,8 +2,6 @@
 {
   home.stateVersion = "23.11";
 
-  home.username = "tuckershea";
-
   home.packages = with pkgs; [
     cloc
     coreutils

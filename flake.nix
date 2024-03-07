@@ -24,7 +24,7 @@
     darwinConfigurations."Tuckers-MacBook-Air" = darwinSystem {
       system = "aarch64-darwin";
       modules = [
-      	./configuration.nix
+      	./system/configuration.nix
         home-manager.darwinModules.home-manager {
           nixpkgs = nixpkgsConfig;
           home-manager.users.tuckershea = import ./home/tuckershea.nix; 
