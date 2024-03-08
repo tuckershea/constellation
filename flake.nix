@@ -33,7 +33,7 @@
       modules = [
         home-manager.darwinModules.home-manager {
           nixpkgs = nixpkgsConfig;
-          home-manager.users.tuckershea = import ./home/tuckershea.nix; 
+          home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix; 
         }
         ./hosts/elmira
       ];
