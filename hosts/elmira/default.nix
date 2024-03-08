@@ -1,10 +1,12 @@
+# Elmira: personal mac laptop
+
 { inputs, pkgs, ... }:
 {
   imports = [
     ../common/core
-  ];
 
-  system.stateVersion = 4;
+    ../common/users/tuckershea
+  ];
 
   homebrew = {
     enable = true;
@@ -26,8 +28,6 @@
 
   users.users.tuckershea.home = "/Users/tuckershea";
 
-  programs.zsh.enable = true;
-
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
      recursive
@@ -42,4 +42,6 @@
     auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so
     auth       sufficient     pam_tid.so
   '';
+
+  system.stateVersion = 4;
 }
