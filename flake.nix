@@ -13,6 +13,7 @@
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager }:
   let
+    inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
 
     nixpkgsConfig = {
@@ -21,15 +22,20 @@
 
   in
   {
-    darwinConfigurations."Tuckers-MacBook-Air" = darwinSystem {
+    nixosModules = import ./modules/nixos;
+    darwinModules = import ./modules/darwin;
+    homeManagerModules = import ./modules/home-manager;
+
+    overlays = import ./overlays { inherit inputs outputs; };
+
+    darwinConfigurations."elmira" = darwinSystem {
       system = "aarch64-darwin";
       modules = [
-      	./system/configuration.nix
         home-manager.darwinModules.home-manager {
           nixpkgs = nixpkgsConfig;
           home-manager.users.tuckershea = import ./home/tuckershea.nix; 
         }
-        ./hosts/Tuckers-MacBook-Air/default.nix
+        ./hosts/elmira
       ];
     };
   };

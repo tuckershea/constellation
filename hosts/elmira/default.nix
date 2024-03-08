@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  imports = [
+    ../common/core
+  ];
+
   system.stateVersion = 4;
 
   homebrew = {
@@ -16,7 +20,21 @@
     ];
   };
 
+  networking = {
+    hostName = "elmira";
+  };
+
   users.users.tuckershea.home = "/Users/tuckershea";
+
+  programs.zsh.enable = true;
+
+  fonts.fontDir.enable = true;
+  fonts.fonts = with pkgs; [
+     recursive
+     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   # Hack to make pam-reattach work
   environment.etc."pam.d/sudo_local".text = ''
