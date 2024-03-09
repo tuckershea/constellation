@@ -13,7 +13,7 @@
 
   home = {
     username = "tuckershea";
-    homeDirectory = lib.mkDefault "/home/tuckershea";
+    homeDirectory = lib.mkDefault "/home/tuckershea";  # fixme
     stateVersion = lib.mkDefault "23.11";
 
     sessionVariables = {

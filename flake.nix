@@ -9,17 +9,14 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-};
+  };
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager }:
   let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
 
-    nixpkgsConfig = {
-      config = { allowUnfree = true; };
-    };
-
+    darwinHome = {users, ...}: home-manager.darwinModules.home-manager { home-manager.users = users; };
   in
   {
     nixosModules = import ./modules/nixos;
@@ -31,11 +28,10 @@
     darwinConfigurations."elmira" = darwinSystem {
       system = "aarch64-darwin";
       modules = [
+        ./hosts/elmira
         home-manager.darwinModules.home-manager {
-          nixpkgs = nixpkgsConfig;
           home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix; 
         }
-        ./hosts/elmira
       ];
     };
   };
