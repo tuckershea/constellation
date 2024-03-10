@@ -3,6 +3,6 @@
   imports = [
     ./common/core
 
-    # optionals
+    ./common/optional/ssh/elmira.nix
   ];
 }
