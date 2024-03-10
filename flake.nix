@@ -15,8 +15,7 @@
   let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
-
-    darwinHome = {users, ...}: home-manager.darwinModules.home-manager { home-manager.users = users; };
+    inherit (nixpkgs.lib) nixosSystem;
   in
   {
     nixosModules = import ./modules/nixos;
@@ -29,8 +28,21 @@
       system = "aarch64-darwin";
       modules = [
         ./hosts/elmira
-        home-manager.darwinModules.home-manager {
+        home-manager.darwinModules.home-manager
+        {
           home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix; 
+        }
+      ];
+    };
+
+    nixosConfigurations."marlon" = nixosSystem {
+      # DigitalOcean droplet
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/marlon
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
         }
       ];
     };

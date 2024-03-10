@@ -12,6 +12,11 @@ in
     packages = [
       
     ];
+  } // lib.optionalAttrs stdenv.isLinux {
+    group = "tuckershea";
+    isNormalUser = true;
   };
+
+  users.groups.tuckershea = { };
 }
 

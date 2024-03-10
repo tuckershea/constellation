@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 {
   imports = [
-    common/core
+    ./common/core
 
     # optionals
   ];

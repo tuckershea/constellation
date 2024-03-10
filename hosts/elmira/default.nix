@@ -26,8 +26,6 @@
     hostName = "elmira";
   };
 
-  users.users.tuckershea.home = "/Users/tuckershea";
-
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
      recursive
