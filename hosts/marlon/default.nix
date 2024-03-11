@@ -6,6 +6,8 @@
 
     ../common/core
 
+    ./secrets.nix
+
     ../common/users/tuckershea
   ];
 

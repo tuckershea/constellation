@@ -9,9 +9,12 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, sops-nix }:
   let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
@@ -40,6 +43,7 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/marlon
+        sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         {
           home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
