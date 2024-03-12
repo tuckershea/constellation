@@ -41,6 +41,7 @@
     nixosConfigurations."marlon" = nixosSystem {
       # DigitalOcean droplet
       system = "x86_64-linux";
+      specialArgs = { inherit (self) inputs outputs; };
       modules = [
         ./hosts/marlon
         sops-nix.nixosModules.sops

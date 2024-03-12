@@ -1,3 +1,3 @@
 {
-  # my-module = import ./my-module.nix;
+  tailscale-autoconnect = import ./tailscale-autoconnect.nix;
 }

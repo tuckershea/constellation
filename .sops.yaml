@@ -1,15 +1,17 @@
 keys:
   - &hosts:
     - &elmira age1r3gh0cyefzalugcqd3jvnxjzkhv70ph2ag7438vuvk5xlx7rryrs7pvfpe
-    - &marlon age10hd9fhc373t4j9grycyh0m4zsp72swgfry5e26c3y9u5jdnvn5csvuc79l
+    - &marlon age1l6rfsztcxez94nl5nwyjlpr0gqnsngzwr0aqrtctp045j9nj8deq0y0kww 
 
 creation_rules:
   - path_regex: hosts/marlon/secrets.yaml$
     key_groups:
       - age:
+        - *elmira
         - *marlon
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
       - age:
         - *elmira
+        - *marlon
 
