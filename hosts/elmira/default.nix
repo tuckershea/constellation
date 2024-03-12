@@ -5,6 +5,8 @@
   imports = [
     ../common/core
 
+    ../../modules/darwin/keep-hostname.nix
+
     ../common/users/tuckershea
   ];
 
@@ -40,6 +42,8 @@
     auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so
     auth       sufficient     pam_tid.so
   '';
+
+  services.keep-hostname.enable = true;
 
   system.stateVersion = 4;
 }
