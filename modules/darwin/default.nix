@@ -1,3 +1,4 @@
 {
-  # my-module = import ./my-module.nix;
+  keep-hostname = import ./keep-hostname.nix;
+  touchid = import ./touchid.nix;
 }

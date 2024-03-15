@@ -29,6 +29,7 @@
 
     darwinConfigurations."elmira" = darwinSystem {
       system = "aarch64-darwin";
+      specialArgs = { inherit (self) inputs outputs; };
       modules = [
         ./hosts/elmira
         home-manager.darwinModules.home-manager

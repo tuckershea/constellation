@@ -1,11 +1,12 @@
 # Elmira: personal mac laptop
 
-{ inputs, pkgs, ... }:
+{ inputs, outputs, pkgs, ... }:
 {
   imports = [
     ../common/core
 
-    ../../modules/darwin/keep-hostname.nix
+    outputs.darwinModules.keep-hostname
+    outputs.darwinModules.touchid
 
     ../common/users/tuckershea
   ];
@@ -33,15 +34,6 @@
      recursive
      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  security.pam.enableSudoTouchIdAuth = true;
-
-  # Hack to make pam-reattach work
-  environment.etc."pam.d/sudo_local".text = ''
-    # Written by nix-darwin
-    auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so
-    auth       sufficient     pam_tid.so
-  '';
 
   services.keep-hostname.enable = true;
 

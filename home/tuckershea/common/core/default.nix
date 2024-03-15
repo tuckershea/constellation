@@ -32,7 +32,5 @@
     neofetch
     poetry
     wget
-  ] ++ lib.optionals stdenv.isDarwin [
-    pam-reattach
   ];
 }
