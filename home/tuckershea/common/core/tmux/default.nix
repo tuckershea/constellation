@@ -10,6 +10,7 @@
 
     extraConfig = lib.strings.concatLines [
       (builtins.readFile ./tmux.conf)
+      "set-option -g repeat-time 0"
     ];
 
     plugins = with pkgs; [
