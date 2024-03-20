@@ -15,6 +15,7 @@ in
   } // lib.optionalAttrs stdenv.isLinux {
     group = "tuckershea";
     isNormalUser = true;
+    extraGroups = [ "wheel" ];
   };
 
   users.groups.tuckershea = { };
