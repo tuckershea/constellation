@@ -7,6 +7,7 @@
     ../common/core
     
     ../common/optional/tailscale-nixos.nix
+    ../common/optional/sudo-no-password-nixos.nix
     ./secrets.nix
 
     ../common/users/tuckershea
