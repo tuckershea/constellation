@@ -9,6 +9,7 @@
     
     ../common/optional/tailscale-nixos.nix
     ../common/optional/sudo-no-password-nixos.nix
+    ../common/optional/node-exporter-nixos.nix
     ./secrets.nix
 
     ../common/users/tuckershea
@@ -16,6 +17,8 @@
 
   networking.networkmanager.enable = true;
   networking.hostName = "marlon";
+  networking.firewall.enable = false;
+  networking.firewall.trustedInterfaces = [ "docker0" ];
 
   system.stateVersion = "23.11";
 
