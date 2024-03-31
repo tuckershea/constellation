@@ -12,4 +12,6 @@
   };
 
   users.users.tuckershea.extraGroups = [ "docker" ];
+
+  networking.firewall.trustedInterfaces = [ "docker0" ];
 }
