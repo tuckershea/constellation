@@ -10,6 +10,7 @@
     ../common/optional/tailscale-nixos.nix
     ../common/optional/sudo-no-password-nixos.nix
     ../common/optional/node-exporter-nixos.nix
+    ../common/optional/no-wait-online-nixos.nix
     ./secrets.nix
 
     ../common/users/tuckershea
