@@ -54,9 +54,9 @@
     shellAliases = {
       ".." = "cd ..";
       "~" = "cd ~";
-      "\"vi?\"" = "fzf --bind 'enter:become(nvim {})'";
-      "\"cd?\"" = "cd \$(fd --type d --hidden --no-ignore | fzf)";
-      "\"cd@\"" = "cd \$(fd --type f --hidden --no-ignore | fzf)";
+      "vi?" = "fzf --bind 'enter:become(nvim {})'";
+      "cd?" = "cd \$(fd --type d --hidden --no-ignore | fzf)";
+      "cd@" = "cd \$(fd --type f --hidden --no-ignore | fzf)";
     };
   };
 }

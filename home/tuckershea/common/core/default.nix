@@ -29,8 +29,11 @@
     ffmpeg
     htop
     less
+    ncdu
     neofetch
     poetry
+    ripgrep
+    sd
     wget
   ];
 }
