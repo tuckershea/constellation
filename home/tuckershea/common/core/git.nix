@@ -13,7 +13,7 @@
       "**/._.DS_Store"
     ];
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMh3wNTGjXPzrHWZI1ZZfoRg3w6osDeB1VUYSaRd5Dk9";
+      key = builtins.readFile ../../../../resources/publickeys/id_norepercussions_github.pub;
       signByDefault = true;
     };
     userEmail = "tucker@tuckershea.com";
