@@ -26,5 +26,5 @@
   };
 
   home.file.".ssh/.keep".text = "Managed by home-manager";
-  home.file.".ssh/id_tuckershea_elmira.pub".source = ../../../../../resources/publickeys/id_elmira_tuckershea.pub;
+  home.file.".ssh/id_tuckershea_elmira.pub".source = ../../../../../resources/publickeys/id_tuckershea_elmira.pub;
 }
