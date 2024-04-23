@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   programs.git = {
     enable = true;
@@ -13,7 +14,7 @@
       "**/._.DS_Store"
     ];
     signing = {
-      key = builtins.readFile ../../../../resources/publickeys/id_norepercussions_github.pub;
+      key = lib.removeSuffix "\n" (builtins.readFile ../../../../resources/publickeys/id_norepercussions_github.pub);
       signByDefault = true;
     };
     userEmail = "tucker@tuckershea.com";
