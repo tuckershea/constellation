@@ -4,6 +4,7 @@
 {
   imports = [
     ../common/core
+    ../common/core-darwin
 
     outputs.darwinModules.keep-hostname
     outputs.darwinModules.touchid
