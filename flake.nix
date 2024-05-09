@@ -40,7 +40,6 @@
     };
 
     nixosConfigurations."marlon" = nixosSystem {
-      # DigitalOcean droplet
       system = "x86_64-linux";
       specialArgs = { inherit (self) inputs outputs; };
       modules = [
@@ -49,6 +48,19 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
+        }
+      ];
+    };
+
+    nixosConfigurations."vic" = nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit (self) inputs outputs; };
+      modules = [
+        ./hosts/vic
+        sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.users.tuckershea = import ./home/tuckershea/vic.nix;
         }
       ];
     };
