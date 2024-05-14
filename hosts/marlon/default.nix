@@ -10,6 +10,8 @@
     ../common/core
     ../common/core-nixos
 
+    ../common/optional/auto-upgrade.nix
+
     ../common/users/root
     ../common/users/tuckershea
   ];
