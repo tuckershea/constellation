@@ -8,7 +8,7 @@
     rebootWindow = {
       lower = "01:00";
       upper = "05:00";
-    }
+    };
   };
 }
 
