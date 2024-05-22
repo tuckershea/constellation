@@ -5,5 +5,6 @@
     ./common/core-darwin
 
     ./common/optional/ssh/elmira.nix
+    ./common/optional/alacritty.nix
   ];
 }

@@ -29,8 +29,6 @@
         "colored-man-pages"
         "command-not-found"
         "fzf"
-        "poetry"
-        "poetry-env"
         "pyenv"
         "rbenv"
         "thefuck"

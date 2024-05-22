@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       import = [
-        "${pkgs.alacritty-theme}/themes/dracula.toml"
+        "${pkgs.alacritty-theme}/dracula.toml"
       ];
 
       window.startup_mode = "Fullscreen";
