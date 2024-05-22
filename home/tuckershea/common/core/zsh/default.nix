@@ -31,7 +31,6 @@
         "fzf"
         "pyenv"
         "rbenv"
-        "thefuck"
         "tmux"
       ];
     };
@@ -59,6 +58,13 @@
       "vi?" = "fzf --bind 'enter:become(nvim {})'";
       "cd?" = "cd \$(fd --type d --hidden --no-ignore | fzf)";
       "cd@" = "cd \$(fd --type f --hidden --no-ignore | fzf)";
+
+      "nr" = "sudo nixos-rebuild --switch flake .";
+      "dr" = "darwin-rebuild --switch flake .";
+
+      # ga, gp, already aliased by...something.
+      # Probably git zsh plugin
+      "gs" = "git status";
 
       "k" = "kubectl";
       "kg" = "kubectl get";
