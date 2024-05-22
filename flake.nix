@@ -12,9 +12,12 @@
 
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, sops-nix }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, sops-nix, nixvim }:
   let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;

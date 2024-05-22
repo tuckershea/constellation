@@ -1,14 +1,45 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  programs.neovim = {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
+
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-      dracula-nvim
-      # get some plugins
-    ];
+    # colorschemes.dracula.enable = true;
+
     viAlias = true;
     vimAlias = true;
+
+    opts = {
+      number = true;
+      relativenumber = true;
+      signcolumn = "yes";
+      showmode = false;
+
+      colorcolumn = "70";
+
+      cursorline = true;
+
+      shiftwidth = 4;
+      tabstop = 4;
+      expandtab = true;
+
+      splitright = true;
+
+      smartcase = true;
+      mouse = "a";
+      undofile = true;
+    };
+
+    globals = {
+      mapleader = " ";
+    };
+    
+    plugins.leap.enable = true;
+    plugins.lsp.enable = true;
+    # substitute.nvim?
+    plugins.treesitter.enable = true;
   };
 }
