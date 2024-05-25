@@ -33,6 +33,7 @@
     neofetch
     poetry
     sd
+    tailscale
     wget
   ];
 
