@@ -4,7 +4,6 @@
     ./boot.nix
     ./docker.nix
     ./hardware-configuration.nix
-    ./k3s.nix
     ./secrets.nix
 
     ../common/core

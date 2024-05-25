@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./k3s.nix
     ./secrets.nix
 
     ../common/core
