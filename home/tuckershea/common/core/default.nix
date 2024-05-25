@@ -32,8 +32,15 @@
     ncdu
     neofetch
     poetry
-    ripgrep
     sd
     wget
   ];
+
+  programs.ripgrep = {
+    enable = true;
+    arguments = [
+      "--max-columns=150"
+      "--smart-case"
+    ];
+  };
 }
