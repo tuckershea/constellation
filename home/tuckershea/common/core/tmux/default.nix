@@ -7,10 +7,14 @@
     mouse = true;
     prefix = "C-s";
     historyLimit = 10000;
+    terminal = "tmux-256color";
 
-    extraConfig = lib.strings.concatLines [
+    extraConfig = lib.mkMerge [
       (builtins.readFile ./tmux.conf)
       "set-option -g repeat-time 0"
+      # True color
+      # https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+      "set -ag terminal-overrides \",*:RGB\""
     ];
 
     plugins = with pkgs; [

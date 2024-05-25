@@ -7,7 +7,7 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    # colorschemes.dracula.enable = true;
+    colorschemes.dracula.enable = true;
 
     viAlias = true;
     vimAlias = true;
