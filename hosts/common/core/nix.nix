@@ -11,7 +11,13 @@ lib.mkMerge [
         extra-platforms = ["x86_64-darwin" "aarch64-darwin" ];
       };
       
-      # set up gc later
+      gc = {
+        automatic = true;
+        # nixos and darwin have different ways to configure
+        # this interval, so instead we just leave it to
+        # the default of 3:15 daily, which is fine.
+        options = "--delete-older-than 7d";
+      };
     };
   }
 
