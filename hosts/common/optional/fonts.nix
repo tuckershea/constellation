@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
-     recursive
-     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    recursive
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 }

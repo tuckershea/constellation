@@ -4,7 +4,6 @@
 # as a duplicate and reconfigures itself as hostname-2 (or -3, etc).
 # We'd like to keep our original hostname, so this service
 # sets it back on a regular interval.
-
 {
   config,
   lib,
@@ -31,13 +30,13 @@ in {
       serviceConfig = {
         Label = "org.tuckershea.keep-hostname";
 
-        StartInterval = 5 * 60;  # every 5 minutes
+        StartInterval = 5 * 60; # every 5 minutes
       };
 
       script = ''
         scutil --set LocalHostName ${config.networking.hostName}
         scutil --set HostName ${config.networking.hostName}
-        '';
+      '';
     };
   };
 }

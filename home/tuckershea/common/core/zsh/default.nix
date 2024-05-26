@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
@@ -40,17 +43,16 @@
       ];
     };
 
-    initExtraFirst =
-    ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]
-; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
+    initExtraFirst = ''
+            if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]
+      ; then
+              source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+            fi
 
-      # No tmux in Jetbrains or when ssh'd into
-      if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [[ -z "$SSH_CONNECTION" ]] then
-        ZSH_TMUX_AUTOSTART='true'
-      fi
+            # No tmux in Jetbrains or when ssh'd into
+            if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [[ -z "$SSH_CONNECTION" ]] then
+              ZSH_TMUX_AUTOSTART='true'
+            fi
     '';
 
     sessionVariables = {
@@ -78,5 +80,3 @@
     };
   };
 }
-
-

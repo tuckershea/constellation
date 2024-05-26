@@ -1,5 +1,8 @@
-{ inputs, outputs, ... }:
 {
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
     ./git.nix
     ./locale.nix
@@ -8,7 +11,7 @@
     ./zsh.nix
   ];
 
-  home-manager.extraSpecialArgs = { inherit inputs outputs; };
+  home-manager.extraSpecialArgs = {inherit inputs outputs;};
 
   nixpkgs = {
     config = {

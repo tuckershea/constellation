@@ -1,5 +1,9 @@
-{ modulesPath, lib, pkgs, ... }:
 {
+  modulesPath,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
@@ -55,7 +59,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
 
   # Enable sound with pipewire.
   sound.enable = true;

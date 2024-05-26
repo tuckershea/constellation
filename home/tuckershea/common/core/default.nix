@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./fzf.nix
     ./git.nix
@@ -13,7 +16,7 @@
 
   home = {
     username = "tuckershea";
-    homeDirectory = lib.mkDefault "/home/tuckershea";  # fixme
+    homeDirectory = lib.mkDefault "/home/tuckershea"; # fixme
     stateVersion = lib.mkDefault "23.11";
 
     sessionVariables = {

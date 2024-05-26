@@ -1,16 +1,22 @@
-{ inputs, lib, pkgs, options, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  options,
+  ...
+}:
 lib.mkMerge [
   {
     nix = {
       settings = {
-#        auto-optimise-store = true;
-        experimental-features = [ "nix-command" "flakes" ];
+        #        auto-optimise-store = true;
+        experimental-features = ["nix-command" "flakes"];
         warn-dirty = false;
 
         # Maybe make this darwin-specific?
-        extra-platforms = ["x86_64-darwin" "aarch64-darwin" ];
+        extra-platforms = ["x86_64-darwin" "aarch64-darwin"];
       };
-      
+
       gc = {
         automatic = true;
         # nixos and darwin have different ways to configure

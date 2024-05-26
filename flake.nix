@@ -17,34 +17,39 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, sops-nix, nixvim }:
-  let
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    darwin,
+    home-manager,
+    sops-nix,
+    nixvim,
+  }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
     inherit (nixpkgs.lib) nixosSystem;
-  in
-  {
+  in {
     nixosModules = import ./modules/nixos;
     darwinModules = import ./modules/darwin;
     homeManagerModules = import ./modules/home-manager;
 
-    overlays = import ./overlays { inherit inputs outputs; };
+    overlays = import ./overlays {inherit inputs outputs;};
 
     darwinConfigurations."elmira" = darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = { inherit (self) inputs outputs; };
+      specialArgs = {inherit (self) inputs outputs;};
       modules = [
         ./hosts/elmira
         home-manager.darwinModules.home-manager
         {
-          home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix; 
+          home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix;
         }
       ];
     };
 
     nixosConfigurations."marlon" = nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit (self) inputs outputs; };
+      specialArgs = {inherit (self) inputs outputs;};
       modules = [
         ./hosts/marlon
         sops-nix.nixosModules.sops
@@ -57,7 +62,7 @@
 
     nixosConfigurations."vic" = nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit (self) inputs outputs; };
+      specialArgs = {inherit (self) inputs outputs;};
       modules = [
         ./hosts/vic
         sops-nix.nixosModules.sops

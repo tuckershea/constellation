@@ -1,5 +1,8 @@
-{ outputs, config, ...}:
 {
+  outputs,
+  config,
+  ...
+}: {
   imports = [outputs.nixosModules.tailscale-autoconnect];
 
   # Requires sops.secrets.tailscale_key to exist!
@@ -10,4 +13,3 @@
     loginServer = "https://login.tailscale.com";
   };
 }
-

@@ -1,12 +1,11 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;
 
     matchBlocks = {
       "*" = {
-        identityFile = [ "~/.ssh/id_tuckershea_elmira.pub" ];
+        identityFile = ["~/.ssh/id_tuckershea_elmira.pub"];
         extraOptions = {
           # Use 1password for auth on elmira (darwin)
           IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";

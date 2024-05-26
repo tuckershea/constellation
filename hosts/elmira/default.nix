@@ -1,7 +1,10 @@
 # Elmira: personal mac laptop
-
-{ inputs, outputs, pkgs, ... }:
 {
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ../common/core
     ../common/core-darwin
@@ -32,8 +35,8 @@
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
-     recursive
-     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    recursive
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 
   services.keep-hostname.enable = true;

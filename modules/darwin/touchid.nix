@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   security.pam.enableSudoTouchIdAuth = true;
 
   environment.etc."pam.d/sudo_local".text = ''

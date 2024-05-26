@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
   ];
@@ -36,7 +39,7 @@
     globals = {
       mapleader = " ";
     };
-    
+
     plugins.leap.enable = true;
     plugins.lsp.enable = true;
     # substitute.nvim?

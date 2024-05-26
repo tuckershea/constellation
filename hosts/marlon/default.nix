@@ -1,5 +1,9 @@
-{ modulesPath, lib, pkgs, ... }:
 {
+  modulesPath,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./boot.nix
     ./docker.nix
