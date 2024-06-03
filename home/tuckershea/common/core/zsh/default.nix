@@ -32,7 +32,6 @@
       # theme = "powerlevel10k/powerlevel10k" set by zsh.plugins
       plugins = [
         "git"
-        "autoenv"
         "bgnotify"
         "colored-man-pages"
         "command-not-found"
