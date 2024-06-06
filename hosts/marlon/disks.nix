@@ -68,4 +68,11 @@
       ];
     };
   };
+
+    fileSystems = {
+      "/".neededForBoot = true;
+      "/nix".neededForBoot = true;
+      "/boot".neededForBoot = true;
+      "/persist".neededForBoot = true;
+      };
 }
