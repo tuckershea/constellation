@@ -36,8 +36,8 @@
       zpool = {
         type = "zpool";
         rootFsOptions = {
-          ashift = "12";
-          autotrim = "on";
+          # ashift = "12";
+          # autotrim = "on";
           acltype = "posixacl";
           atime = "off";
           canmount = "off";
