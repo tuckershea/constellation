@@ -21,30 +21,6 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [ "defaults" "size=2G" "mode=755" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/sda1";
-    fsType = "vfat";
-  };
-
-  fileSystems."/nix" = {
-    device = "zpool/nix";
-    fsType = "zfs";
-    options = [ "zfsutil" ];
-  };
-
-  fileSystems."/persist" = {
-    device = "zpool/persist";
-    fsType = "zfs";
-    options = [ "zfsutil" ];
-    neededForBoot = true;
-  };
-
   swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
