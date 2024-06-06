@@ -15,6 +15,12 @@
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -24,6 +30,8 @@
     home-manager,
     sops-nix,
     nixvim,
+    impermanence,
+    disko,
   }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;

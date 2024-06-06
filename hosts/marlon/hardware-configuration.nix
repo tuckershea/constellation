@@ -17,9 +17,32 @@
   boot.kernelModules = [];
   boot.extraModulePackages = [];
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/70dd6996-252e-48c6-8681-50971eaef9b6";
-    fsType = "ext4";
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=2G" "mode=755" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/sda1";
+    fsType = "vfat";
+  };
+
+  fileSystems."/nix" = {
+    device = "zpool/nix";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
+  fileSystems."/persist" = {
+    device = "zpool/persist";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+    neededForBoot = true;
   };
 
   swapDevices = [];
