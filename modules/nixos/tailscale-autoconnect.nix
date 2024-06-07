@@ -37,6 +37,12 @@ in {
       default = false;
       description = "Whether to allow LAN access to this node";
     };
+
+    ephemeral = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether to log out during shutdowns";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -64,6 +70,7 @@ in {
       wantedBy = ["multi-user.target"];
 
       serviceConfig.Type = "oneshot";
+      serviceConfig.RemainAfterExit = true;
 
       script = with pkgs; ''
         # wait for tailscaled to settle
@@ -89,8 +96,13 @@ in {
           ${lib.optionalString (cfg.loginServer != "") "--login-server=${cfg.loginServer}"} \
           ${lib.optionalString (cfg.advertiseExitNode) "--advertise-exit-node"} \
           ${lib.optionalString (cfg.exitNode != "") "--exit-node=${cfg.exitNode}"} \
-          ${lib.optionalString (cfg.exitNodeAllowLanAccess) "--exit-node-allow-lan-access"}
+          ${lib.optionalString (cfg.exitNodeAllowLanAccess) "--exit-node-allow-lan-access"} \
+          ${lib.optionalString (cfg.ephemeral) "--state=mem:"}
       '';
+      
+      postStop = mkIf cfg.ephemeral (with pkgs; ''
+        ${tailscale}/bin/tailscale logout
+      '');
     };
 
     networking.firewall = {
