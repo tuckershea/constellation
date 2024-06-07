@@ -17,10 +17,9 @@
   boot.kernelModules = [];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/70dd6996-252e-48c6-8681-50971eaef9b6";
-    fsType = "ext4";
-  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
 
   swapDevices = [];
 

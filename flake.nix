@@ -15,6 +15,11 @@
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -24,6 +29,8 @@
     home-manager,
     sops-nix,
     nixvim,
+    impermanence,
+    disko,
   }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
@@ -54,6 +61,8 @@
         ./hosts/marlon
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
         {
           home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
         }
