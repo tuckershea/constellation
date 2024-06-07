@@ -30,8 +30,6 @@
 
   users.mutableUsers = false;
 
-  users.users.root.initialPassword = "hunter2";
-
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
