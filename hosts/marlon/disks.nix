@@ -31,8 +31,16 @@
               content = {
                 type = "zfs";
                 pool = "zpool";
+                };
+            };
+            swap = {
+              size = "8G";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true;
               };
-           };
+            };
           };
         };
       };
@@ -67,7 +75,7 @@
     nodev."/" = {
       fsType = "tmpfs";
       mountOptions = [
-        "size=1G"
+        "size=2G"
         "defaults"
         "mode=755"
       ];
