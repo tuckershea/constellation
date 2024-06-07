@@ -61,6 +61,8 @@
         ./hosts/marlon
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
         {
           home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
         }

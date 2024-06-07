@@ -19,8 +19,6 @@
 
     ../common/users/root
     ../common/users/tuckershea
-
-    inputs.impermanence.nixosModules.impermanence
   ];
 
   networking.hostName = "marlon";
