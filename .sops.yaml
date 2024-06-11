@@ -3,6 +3,7 @@ keys:
     - &elmira age1r3gh0cyefzalugcqd3jvnxjzkhv70ph2ag7438vuvk5xlx7rryrs7pvfpe
     - &marlon age1mxeanghmkfjqjcs8n3vpy952gysrwhmkk7ptrtsxqsuxvsqh83uqnfh0tl
     - &vic age1fu6wm42w4ke6ecwhwwqv7arfgn5spt7yzkj5rcassa0l0vyqgg4snyvv7m
+    - &roland age19zdq4zn9ftqujq79fra2a2fe8ksnjag78g2rhlcp9fa98cuy3uhqsqmzwq
 
 creation_rules:
   - path_regex: hosts/marlon/secrets.yaml$
@@ -10,6 +11,11 @@ creation_rules:
       - age:
         - *elmira
         - *marlon
+  - path_regex: hosts/roland/secrets.yaml$
+    key_groups:
+      - age:
+        - *elmira
+        - *roland
   - path_regex: hosts/vic/secrets.yaml$
     key_groups:
       - age:
