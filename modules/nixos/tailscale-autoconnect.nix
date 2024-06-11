@@ -96,13 +96,8 @@ in {
           ${lib.optionalString (cfg.loginServer != "") "--login-server=${cfg.loginServer}"} \
           ${lib.optionalString (cfg.advertiseExitNode) "--advertise-exit-node"} \
           ${lib.optionalString (cfg.exitNode != "") "--exit-node=${cfg.exitNode}"} \
-          ${lib.optionalString (cfg.exitNodeAllowLanAccess) "--exit-node-allow-lan-access"} \
-          ${lib.optionalString (cfg.ephemeral) "--state=mem:"}
+          ${lib.optionalString (cfg.exitNodeAllowLanAccess) "--exit-node-allow-lan-access"}
       '';
-      
-      postStop = mkIf cfg.ephemeral (with pkgs; ''
-        ${tailscale}/bin/tailscale logout
-      '');
     };
 
     networking.firewall = {
@@ -116,6 +111,9 @@ in {
         if cfg.advertiseExitNode
         then "server"
         else "client";
+      extraDaemonFlags = 
+        lib.mkIf cfg.ephemeral
+        [ "--state=mem:" ];
     };
   };
 }
