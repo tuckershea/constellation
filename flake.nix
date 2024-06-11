@@ -69,6 +69,21 @@
       ];
     };
 
+    nixosConfigurations."roland" = nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit (self) inputs outputs;};
+      modules = [
+        ./hosts/roland
+        sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
+        {
+          home-manager.users.tuckershea = import ./home/tuckershea/roland.nix;
+        }
+      ];
+    };
+
     nixosConfigurations."vic" = nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit (self) inputs outputs;};
