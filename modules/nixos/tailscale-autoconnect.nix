@@ -37,6 +37,12 @@ in {
       default = false;
       description = "Whether to allow LAN access to this node";
     };
+
+    ephemeral = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether to log out during shutdowns";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -104,6 +110,9 @@ in {
         if cfg.advertiseExitNode
         then "server"
         else "client";
+      extraDaemonFlags = 
+        lib.mkIf cfg.ephemeral
+        [ "--state=mem:" ];
     };
   };
 }

@@ -28,6 +28,8 @@
 
   users.mutableUsers = false;
 
+  services.tailscaleAutoconnect.ephemeral = true;
+
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
