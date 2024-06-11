@@ -70,7 +70,6 @@ in {
       wantedBy = ["multi-user.target"];
 
       serviceConfig.Type = "oneshot";
-      serviceConfig.RemainAfterExit = true;
 
       script = with pkgs; ''
         # wait for tailscaled to settle
