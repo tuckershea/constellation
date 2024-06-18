@@ -23,6 +23,7 @@
       "arc"
       "discord"
       "messenger"
+      "rbenv"
       "rectangle"
       "slack"
       "keepingyouawake"
