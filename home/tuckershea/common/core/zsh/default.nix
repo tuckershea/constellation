@@ -77,5 +77,17 @@
       "kd" = "kubectl describe";
       "ka" = "kubectl apply";
     };
+
+    profileExtra = ''
+      # nixpkgs shorthand:
+      # np fastfetch --help
+      # nix run nixpkgs#fastfetch -- --help
+      np() {
+        local command=$1
+        shift
+        local args=("$@")
+        nix run "nixpkgs#$command" -- "''${args[@]}"
+      }
+    '';
   };
 }
