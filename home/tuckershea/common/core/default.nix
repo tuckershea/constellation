@@ -8,7 +8,6 @@
     ./git.nix
     ./neovim.nix
     ./pyenv.nix
-    ./rbenv.nix
     ./thefuck.nix
     ./tmux
     ./zsh
@@ -32,7 +31,6 @@
     ffmpeg
     htop
     less
-    ncdu
     neofetch
     poetry
     sd
