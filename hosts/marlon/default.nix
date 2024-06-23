@@ -11,6 +11,7 @@
     ./docker.nix
     ./hardware-configuration.nix
     ./secrets.nix
+    ./terraria.nix
 
     ../common/core
     ../common/core-nixos
