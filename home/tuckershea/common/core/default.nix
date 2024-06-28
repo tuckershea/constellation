@@ -8,6 +8,7 @@
     ./git.nix
     ./neovim.nix
     ./pyenv.nix
+    ./surfingkeys
     ./thefuck.nix
     ./tmux
     ./zsh
