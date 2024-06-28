@@ -32,7 +32,7 @@
       splitright = true;
 
       smartcase = true;
-      mouse = "a";
+      mouse = "";
       undofile = true;
     };
 
