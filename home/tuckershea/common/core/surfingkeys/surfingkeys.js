@@ -259,7 +259,7 @@ api.addSearchAlias('o', 'NixOS Options', 'https://search.nixos.org/options?chann
     });
 });
 
-api.addSearchAlias('n', 'NixOS Wiki', 'https://wiki.nixos.org/w/index.php?search=', 'o', 'https://wiki.nixos.org/w/index.php?search=', function(response) {
+api.addSearchAlias('n', 'NixOS Wiki', 'https://wiki.nixos.org/w/index.php?search=', 'n', 'https://wiki.nixos.org/w/index.php?search=', function(response) {
     var res = JSON.parse(response.text);
     return res.map(function(r){
         return r.phrase;
