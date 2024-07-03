@@ -1,7 +1,7 @@
 {
   system.autoUpgrade = {
     enable = true;
-    flake = "github:tuckershea/nix-config";
+    flake = "github:tuckershea/constellation";
     dates = "04:00";
     randomizedDelaySec = "45min";
     allowReboot = true;
