@@ -97,5 +97,16 @@
         }
       ];
     };
+
+    top =
+          let
+            nixtop = inputs.nixpkgs.lib.genAttrs
+              (builtins.attrNames inputs.self.nixosConfigurations)
+              (attr: inputs.self.nixosConfigurations.${attr}.config.system.build.toplevel);
+            darwintop = inputs.nixpkgs.lib.genAttrs
+              (builtins.attrNames inputs.self.darwinConfigurations)
+              (attr: inputs.self.darwinConfigurations.${attr}.system);
+          in
+          nixtop // darwintop;
   };
 }
