@@ -1,0 +1,72 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "**.nix"
+      - "flake.lock"
+
+jobs:
+  build:
+    name: "Build and Cache ${{ matrix.target }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: elmira
+          - os: ubuntu-latest
+            target: marlon
+          - os: ubuntu-latest
+            target: roland
+          - os: ubuntu-latest
+            target: vic
+    steps:
+      - name: Create nix mount point
+        if: contains(matrix.os, 'ubuntu')
+        run: sudo mkdir /nix
+
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@v10
+        if: contains(matrix.os, 'ubuntu')
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          build-mount-path: "/nix"
+          remove-dotnet: true
+          remove-android: true
+          remove-haskell: true
+          remove-docker-images: true
+          remove-codeql: true
+          overprovision-lvm: true
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: tuckershea
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          # exclude nix-community so we build to our cache
+
+      - name: Build target
+        run: |
+          set -o pipefail
+          nix build .#top.${{ matrix.target }} --fallback --show-trace -v --log-format raw > >(tee /tmp/nix-build-out.log) 2> >(tee /tmp/nix-build-err.log >&2)
+
+      - name: Output build failure
+        if: failure()
+        run: |
+          drv=$(grep "For full logs, run" /tmp/nix-build-err.log | grep -oE "/nix/store/.*.drv")
+          nix log $drv
+          echo $drv
+          exit 1
