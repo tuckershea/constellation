@@ -9,6 +9,8 @@
     ../common/core
     ../common/core-darwin
 
+    ../common/optional/fonts.nix
+
     outputs.darwinModules.keep-hostname
     outputs.darwinModules.touchid
 
@@ -23,7 +25,6 @@
       "arc"
       "discord"
       "messenger"
-      "rbenv"
       "rectangle"
       "slack"
       "keepingyouawake"
@@ -33,12 +34,6 @@
   networking = {
     hostName = "elmira";
   };
-
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
-    recursive
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
 
   services.keep-hostname.enable = true;
 
