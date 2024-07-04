@@ -78,7 +78,7 @@ jobs:
       - name: Scan for security issues
         id: security
         run: |
-          nix run nixpkgs#vulnix -- -w https://raw.githubusercontent.com/ckauhaus/nixos-vulnerability-roundup/master/whitelists/nixos-20.09.toml ./profile | tee /tmp/security.txt
+          nix run nixpkgs#vulnix -- -w https://raw.githubusercontent.com/tuckershea/vulnix-whitelist/main/whitelist.toml ./profile | tee /tmp/security.txt
           OUTPUT_SECURITY="$(cat /tmp/security.txt)"
           OUTPUT_SECURITY="${OUTPUT_SECURITY//'%'/'%25'}"
           OUTPUT_SECURITY="${OUTPUT_SECURITY//$'\n'/'%0A'}"
