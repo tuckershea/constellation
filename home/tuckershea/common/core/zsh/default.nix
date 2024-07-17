@@ -86,7 +86,15 @@
         local command=$1
         shift
         local args=("$@")
-        nix run "nixpkgs#$command" -- "''${args[@]}"
+        nix run "nixpkgs/nixos-24.05#$command" -- "''${args[@]}"
+      }
+
+      # nixpkgs unstable shorthand
+      nu() {
+        local command=$1
+        shift
+        local args=("$@")
+        nix run "nixpkgs/nixos-unstable#$command" -- "''${args[@]}"
       }
     '';
   };
