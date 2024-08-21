@@ -301,6 +301,11 @@ Visual.style("cursor", "background-color: #51AFEF;");
 // Change default search engine
 //settings.defaultSearchEngine = "w";
 // -----------------------------------------------------------------------------------------------------------------------
+//
+
+// Prevent on certain websites
+api.unmapAllExcept([], /youtube.com|gmail.com|nytimes.com/);
+
 // Change hints styles
 // -----------------------------------------------------------------------------------------------------------------------
 api.Hints.characters = "asdfgqwertvbn";
