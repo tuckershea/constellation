@@ -22,6 +22,11 @@
         user = "tshea";
       };
     };
+
+    extraConfig = lib.mkMerge [
+        "GSSAPIAuthentication yes"
+        "GSSAPIDelegateCredentials yes"
+    ];
   };
 
   home.file.".ssh/.keep".text = "Managed by home-manager";
