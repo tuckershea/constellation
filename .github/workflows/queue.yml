@@ -8,7 +8,7 @@ permissions:
 jobs:
   build:
     if: github.event.pull_request.draft == false
-    name: "Build ${{ matrix.target }}"
+    name: "Merge Build ${{ matrix.target }}"
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
