@@ -303,8 +303,23 @@ Visual.style("cursor", "background-color: #51AFEF;");
 // -----------------------------------------------------------------------------------------------------------------------
 //
 
-// Prevent on certain websites
-api.unmapAllExcept([], /youtube.com|gmail.com|nytimes.com/);
+// Prevent on certain domains if they are predominantly typing
+// or have their own keybinds. You can add root paths
+// such as example.com/path/.
+let unmapDomains = [
+    "youtube.com",
+    "gmail.com",
+    "nytimes.com/crosswords/",
+    "docs.google.com"
+];
+
+let unmapRegex = unmapDomains
+    .map((domain) => domain.replace(/\/+$/, ''))  // strip trailing slash
+    .map((domain) => domain.replace(".", "\\."))  // escape period for regex
+    .map((domain) => `(https?:\\/\\/(.+?\\.)?${domain}(\\/[A-Za-z2-9\\-\\._~:\\/\\?#\\[\\]@!$&'\\(\\)\\*\\+,;\\=]*)?)`)  // regex for each domain
+    .join("|");  // merge regexes
+
+api.unmapAllExcept([], new RegExp(unmapRegex));
 
 // Change hints styles
 // -----------------------------------------------------------------------------------------------------------------------
