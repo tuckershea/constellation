@@ -301,6 +301,26 @@ Visual.style("cursor", "background-color: #51AFEF;");
 // Change default search engine
 //settings.defaultSearchEngine = "w";
 // -----------------------------------------------------------------------------------------------------------------------
+//
+
+// Prevent on certain domains if they are predominantly typing
+// or have their own keybinds. You can add root paths
+// such as example.com/path/.
+let unmapDomains = [
+    "youtube.com",
+    "gmail.com",
+    "nytimes.com/crosswords/",
+    "docs.google.com"
+];
+
+let unmapRegex = unmapDomains
+    .map((domain) => domain.replace(/\/+$/, ''))  // strip trailing slash
+    .map((domain) => domain.replace(".", "\\."))  // escape period for regex
+    .map((domain) => `(https?:\\/\\/(.+?\\.)?${domain}(\\/[A-Za-z2-9\\-\\._~:\\/\\?#\\[\\]@!$&'\\(\\)\\*\\+,;\\=]*)?)`)  // regex for each domain
+    .join("|");  // merge regexes
+
+api.unmapAllExcept([], new RegExp(unmapRegex));
+
 // Change hints styles
 // -----------------------------------------------------------------------------------------------------------------------
 api.Hints.characters = "asdfgqwertvbn";
