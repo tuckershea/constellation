@@ -8,6 +8,7 @@
     ./locale.nix
     ./nix.nix
     ./openssh.nix
+    ./registry.nix
     ./zsh.nix
   ];
 
