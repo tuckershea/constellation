@@ -21,6 +21,9 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+  
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -32,6 +35,7 @@
     nixvim,
     impermanence,
     disko,
+    nix-index-database,
   }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;

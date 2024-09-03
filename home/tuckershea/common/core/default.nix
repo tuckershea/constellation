@@ -1,9 +1,12 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.nix-index-database.hmModules.nix-index
+
     ./fzf.nix
     ./git.nix
     ./neovim.nix
@@ -46,4 +49,6 @@
       "--smart-case"
     ];
   };
+
+  programs.nix-index-database.comma.enable = true;
 }
