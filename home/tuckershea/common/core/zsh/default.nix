@@ -67,12 +67,22 @@
       "cd?" = "cd \$(fd --type d --hidden --no-ignore | fzf)";
       "cd@" = "cd \$(fd --type f --hidden --no-ignore | fzf)";
 
-      "nr" = "sudo nixos-rebuild --switch flake .";
-      "dr" = "darwin-rebuild --switch flake .";
+      "nb" = "nix build";
+      "nd" = "nix develop";
+      "nf" = "nix flake";
+      "nfc" = "nix flake check";
+      "nfl" = "nix flake lock";
+      "nr" = "nix run";
+      "ns" = "nix shell";
+
+      "nosf" = "nixos-rebuild switch --flake";
+      "dsf" = "darwin-rebuild switch --flake";
 
       # ga, gp, already aliased by...something.
       # Probably git zsh plugin
       "gs" = "git status";
+      "gre" = "git reset";
+      "grb" = "git rebase";
 
       "k" = "kubectl";
       "kg" = "kubectl get";
