@@ -9,12 +9,12 @@
     ./secrets.nix
 
     ../common/core
-    ../common/core-nixos
+    ../common/nixos
+    ../common/graphical
 
-    ../common/users/root
+    # optionals here...
+
     ../common/users/tuckershea
-
-    ../common/optional/fonts.nix
   ];
 
   networking.hostName = "vic";

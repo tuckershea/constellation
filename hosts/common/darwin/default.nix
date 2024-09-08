@@ -1,6 +1,7 @@
 {
   imports = [
-    ./auto-font-smoothing.nix
+    ./font-smoothing.nix
     ./keyboard.nix
+    ./nix.nix
   ];
 }

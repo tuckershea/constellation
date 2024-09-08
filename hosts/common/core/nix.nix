@@ -5,40 +5,56 @@
   options,
   ...
 }:
-lib.mkMerge [
-  {
-    nix = {
-      settings = {
-        #        auto-optimise-store = true;
-        experimental-features = ["nix-command" "flakes"];
-        warn-dirty = false;
+{
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+      warn-dirty = false;
 
-        # Maybe make this darwin-specific?
-        extra-platforms = ["x86_64-darwin" "aarch64-darwin"];
+      trusted-public-keys = [
+        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+        "tuckershea.cachix.org-1:a9DdtLF8DyqAHFV7VHlA7YvasP6wUMHdOygVyks3JGM="
+      ];
 
-        trusted-public-keys = [
-          "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-          "tuckershea.cachix.org-1:a9DdtLF8DyqAHFV7VHlA7YvasP6wUMHdOygVyks3JGM="
-        ];
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://tuckershea.cachix.org"
+      ];
+    };
 
-        substituters = [
-          "https://cache.nixos.org/"
-          "https://tuckershea.cachix.org"
-        ];
-      };
+    gc = {
+      automatic = true;
 
-      gc = {
-        automatic = true;
-        # nixos and darwin have different ways to configure
-        # this interval, so instead we just leave it to
-        # the default of 3:15 daily, which is fine.
-        options = "--delete-older-than 7d";
+      # GC every Monday morning
+      interval = lib.mkMerge [
+        (lib.mkIf pkgs.stdenv.isDarwin [{
+          Hour = 3;
+          Minute = 15;
+          Weekday = 1;
+        }])
+        (lib.mkIf pkgs.stdenv.isLinux "Mon *-*-* 03:15:00")
+      ];
+
+      # keep profile generations around for one week
+      options = "--delete-older-than 7d";
+    };
+
+    registry = {
+      # Lock nixpkgs so we don't need to download it
+      # every time we want to do nix run/develop/etc
+      nixpkgs = {
+        from = { id = "nixpkgs"; type = "indirect"; };
+        flake = inputs.nixpkgs;
       };
     };
-  }
+  };
 
-  # nix-daemon only on darwin, check option to avoid recursion
-  (lib.optionalAttrs (lib.hasAttr "nix-daemon" options.services) {
-    services.nix-daemon.enable = true;
-  })
-]
+  services.nix-daemon.enable = lib.mkIf pkgs.stdenv.isDarwin true;
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+}

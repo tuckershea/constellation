@@ -54,6 +54,7 @@
         home-manager.darwinModules.home-manager
         {
           home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix;
+          home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
     };
@@ -69,6 +70,7 @@
         disko.nixosModules.disko
         {
           home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
+          home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
     };
@@ -84,6 +86,7 @@
         disko.nixosModules.disko
         {
           home-manager.users.tuckershea = import ./home/tuckershea/roland.nix;
+          home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
     };
@@ -97,6 +100,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.users.tuckershea = import ./home/tuckershea/vic.nix;
+          home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
     };

@@ -1,5 +1,6 @@
 {
   imports = [
+    ./auto-upgrade.nix
     ./network.nix
     ./no-wait-online.nix # mitigate NetworkManager Wait-Online failure
     ./node-exporter.nix

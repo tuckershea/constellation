@@ -6,25 +6,22 @@
   inherit (pkgs) stdenv;
 in {
   users.users.tuckershea =
-    {
-      home =
-        if stdenv.isDarwin
-        then "/Users/tuckershea"
-        else "/home/tuckershea";
-      shell = pkgs.zsh;
-      description = "Tucker Shea";
+  {
+    home = lib.mkMerge [
+      (lib.mkIf stdenv.isDarwin "/Users/tuckershea")
+      (lib.mkIf stdenv.isLinux "/home/tuckershea")
+    ];
+    shell = pkgs.zsh;
+    description = "Tucker Shea";
 
-      openssh.authorizedKeys.keyFiles = [
-        ../../../../resources/publickeys/id_tuckershea_elmira.pub
-      ];
+    openssh.authorizedKeys.keyFiles = [
+      ../../../../resources/publickeys/id_tuckershea_elmira.pub
+    ];
 
-      packages = [];
-    }
-    // lib.optionalAttrs stdenv.isLinux {
-      group = "tuckershea";
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-    };
+    group = lib.mkIf stdenv.isLinux "tuckershea";
+    isNormalUser = lib.mkIf stdenv.isLinux true;
+    extraGroups = lib.mkIf stdenv.isLinux ["wheel"];
+  };
 
-  users.groups.tuckershea = {};
+  users.groups.tuckershea = lib.mkIf stdenv.isLinux {};
 }

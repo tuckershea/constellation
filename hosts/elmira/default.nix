@@ -7,9 +7,10 @@
 }: {
   imports = [
     ../common/core
-    ../common/core-darwin
+    ../common/darwin
+    ../common/graphical
 
-    ../common/optional/fonts.nix
+    # optionals here...
 
     outputs.darwinModules.keep-hostname
     outputs.darwinModules.touchid
