@@ -27,14 +27,12 @@
       automatic = true;
 
       # GC every Monday morning
-      interval = lib.mkMerge [
-        (lib.mkIf pkgs.stdenv.isDarwin [{
+      interval = lib.mkIf pkgs.stdenv.isDarwin [{
           Hour = 3;
           Minute = 15;
           Weekday = 1;
-        }])
-        (lib.mkIf pkgs.stdenv.isLinux "Mon *-*-* 03:15:00")
-      ];
+        }];
+      dates = lib.mkIf pkgs.stdenv.isLinux "Mon *-*-* 03:15:00";
 
       # keep profile generations around for one week
       options = "--delete-older-than 7d";
