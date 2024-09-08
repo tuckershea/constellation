@@ -53,7 +53,12 @@
         ./hosts/elmira
         home-manager.darwinModules.home-manager
         {
-          home-manager.users.tuckershea = import ./home/tuckershea/elmira.nix;
+          home-manager.users.tuckershea.imports = [
+            ./home/tuckershea/shell
+            ./home/tuckershea/graphical
+            ./home/tuckershea/darwin
+            ./home/tuckershea/hosts/elmira
+          ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
@@ -69,7 +74,9 @@
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
         {
-          home-manager.users.tuckershea = import ./home/tuckershea/marlon.nix;
+          home-manager.users.tuckershea.imports = [
+            ./home/tuckershea/shell
+          ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
@@ -85,7 +92,9 @@
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
         {
-          home-manager.users.tuckershea = import ./home/tuckershea/roland.nix;
+          home-manager.users.tuckershea.imports = [
+            ./home/tuckershea/shell
+          ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];
@@ -99,7 +108,10 @@
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         {
-          home-manager.users.tuckershea = import ./home/tuckershea/vic.nix;
+          home-manager.users.tuckershea.imports = [
+            ./home/tuckershea/shell
+            ./home/tuckershea/graphical
+          ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
       ];

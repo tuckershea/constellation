@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -13,7 +17,7 @@
       "**/._.DS_Store"
     ];
     signing = {
-      key = lib.removeSuffix "\n" (builtins.readFile ../../../../resources/publickeys/id_norepercussions_github.pub);
+      key = lib.removeSuffix "\n" (builtins.readFile ../../../resources/publickeys/id_norepercussions_github.pub);
       signByDefault = true;
     };
     userEmail = "tucker@tuckershea.com";
@@ -23,8 +27,7 @@
       core.autocrlf = "input";
       init.defaultBranch = "main";
 
-      # todo: change this for non-mac systems
-      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      "gpg \"ssh\"".program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
   };
 }
