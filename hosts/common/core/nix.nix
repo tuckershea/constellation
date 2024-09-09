@@ -27,16 +27,18 @@
       automatic = true;
 
       # GC every Monday morning
-      interval = lib.mkIf pkgs.stdenv.isDarwin [{
-          Hour = 3;
-          Minute = 15;
-          Weekday = 1;
-        }];
       dates = lib.mkIf pkgs.stdenv.isLinux "Mon *-*-* 03:15:00";
 
       # keep profile generations around for one week
       options = "--delete-older-than 7d";
-    };
+    } //
+    (lib.optionalAttrs pkgs.stdenv.isDarwin {
+      interval = [{
+        Hour = 3;
+        Minute = 15;
+        Weekday = 1;
+      }];
+    });
 
     registry = {
       # Lock nixpkgs so we don't need to download it
