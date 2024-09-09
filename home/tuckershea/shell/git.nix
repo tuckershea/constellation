@@ -26,8 +26,6 @@
       gpg.format = "ssh";
       core.autocrlf = "input";
       init.defaultBranch = "main";
-
-      "gpg \"ssh\"".program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
   };
 }

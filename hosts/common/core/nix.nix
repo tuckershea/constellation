@@ -28,7 +28,7 @@
 
       # GC every Monday morning
       # customized in hosts/common/darwin/nix.nix
-      dates = lib.mkIf pkgs.stdenv.isLinux "Mon *-*-* 03:15:00";
+      # and hosts/common/nixos/nix.nix
 
       # keep profile generations around for one week
       options = "--delete-older-than 7d";
