@@ -14,11 +14,10 @@
     ./terraria.nix
 
     ../common/core
-    ../common/core-nixos
+    ../common/nixos
 
-    ../common/optional/auto-upgrade.nix
+    # optionals here...
 
-    ../common/users/root
     ../common/users/tuckershea
   ];
 

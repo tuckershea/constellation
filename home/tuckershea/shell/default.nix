@@ -5,13 +5,11 @@
   ...
 }: {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
-
     ./fzf.nix
     ./git.nix
     ./neovim.nix
-    ./pyenv.nix
-    ./surfingkeys
+    ./nix-index.nix
+    ./ripgrep.nix
     ./thefuck.nix
     ./tmux
     ./zsh
@@ -41,14 +39,4 @@
     tailscale
     wget
   ];
-
-  programs.ripgrep = {
-    enable = true;
-    arguments = [
-      "--max-columns=150"
-      "--smart-case"
-    ];
-  };
-
-  programs.nix-index-database.comma.enable = true;
 }
