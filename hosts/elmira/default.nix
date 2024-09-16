@@ -21,14 +21,19 @@
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
+
+    brews = [
+      "kstart"
+    ];
     casks = [
       "1password"
       "arc"
       "discord"
+      "keepingyouawake"
+      "keycastr"
       "messenger"
       "rectangle"
       "slack"
-      "keepingyouawake"
     ];
   };
 
