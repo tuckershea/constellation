@@ -15,18 +15,24 @@
 
 (defalias
     fnl (tap-hold 200 200 fn (layer-toggle fn))
+    ces (tap-hold-press 200 200 esc (layer-while-held super))
+    abr sldr
 
-    supr (multi lsft lctl lalt lmet)
+    supr (multi lctl lalt lmet)
+    dupr (multi shft @supr)
 
-    ces (tap-hold 200 200 esc @supr)
+    mc f13
+    src f14
+    mic f15
+    dnd f16
 )
 
 (deflayer base
-    esc  brdn brup _    _    _    _    prev pp   next mute vold  volu
+    esc  brdn brup @mc  @src @mic @dnd prev pp   next mute vold  volu
     lsgt 1    2    3    4    5    6    7    8    9    0    -    =    bspc
     tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
     @ces a    s    d    f    g    h    j    k    l    ;    '    ret
-    lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
+    lsft grv  z    x    c    v    b    n    m    ,    .    /    @abr
     @fnl lctl lalt lmet           spc            rmet ralt
 )
 
@@ -38,4 +44,128 @@
     _    _    _    _    _    _    _    _    _    _    _    _    _
     _    _    _    _              _              _    _
 )
+
+(deflayer super
+    esc  brdn brup f13  f14  f15  f16  prev pp   next mute vold  volu
+    lsgt @su1 @su2 @su3 @su4 @su5 @su6 @su7 @su8 @su9 @su0 -    =    bspc
+    tab  @suq @suw @sue @sur @sut @suy @suu @sui @suo @sup [    ]    \
+    _    @sua @sus @sud @suf @sug @suh @suj @suk @sul ;    '    ret
+    @suls grv @suz @sux @suc @suv @sub @sun @sum ,    .    /    _   
+    _    _    _    _              @susp          _    _   
+)
+
+(defalias
+    sua (chord super a)
+    sub (chord super b)
+    suc (chord super c)
+    sud (chord super d)
+    sue (chord super e)
+    suf (chord super f)
+    sug (chord super g)
+    suh (chord super h)
+    sui (chord super i)
+    suj (chord super j)
+    suk (chord super k)
+    sul (chord super l)
+    sum (chord super m)
+    sun (chord super n)
+    suo (chord super o)
+    sup (chord super p)
+    suq (chord super q)
+    sur (chord super r)
+    sus (chord super s)
+    sut (chord super t)
+    suu (chord super u)
+    suv (chord super v)
+    suw (chord super w)
+    sux (chord super x)
+    suy (chord super y)
+    suz (chord super z)
+
+    su1 (chord super 1)
+    su2 (chord super 2)
+    su3 (chord super 3)
+    su4 (chord super 4)
+    su5 (chord super 5)
+    su6 (chord super 6)
+    su7 (chord super 7)
+    su8 (chord super 8)
+    su9 (chord super 9)
+    su0 (chord super 0)
+
+    suls (chord super lsft)
+    susp (chord super spc)
+)
+
+(defchords super 500
+    (a)         (multi @supr a)         ;; open arc
+    (b)         (multi lalt lft)        ;; left one word
+    (c)         nop0
+    (d)         bspc
+    (e)         ret
+    (lsft e)    (multi lmet ret)        ;; cmd + enter idiom
+    (f)         (multi @supr f)         ;; homerow find
+    (lsft f)    (multi @dupr f)         ;; homerow search
+    (g)         nop0
+    (h)         (multi @dupr 1)         ;; switch to space 1
+    (i)         nop0
+    (j)         (multi @dupr lft)       ;; switch space left
+    (k)         (multi @dupr rght)      ;; switch space right
+    (l)         nop0
+    (m)         nop0
+    (n)         nop0
+    (o)         nop0
+    (p)         nop0
+    (q)         nop0
+    (r)         nop0
+    (s)         (multi @supr s)         ;; open slack
+    (t)         nop0
+    (u)         nop0
+    (v)         nop0
+    (w)         (multi lalt rght)       ;; right one word
+    (x)         nop0
+    (y)         nop0
+    (z)         nop0
+
+    (1)         nop0
+    (2)         nop0
+    (3)         (multi lmet lctl 3)     ;; screenshot bindings
+    (lsft 3)    (multi lsft lmet lctl 3)
+    (4)         (multi lmet lctl 4)
+    (lsft 4)    (multi lsft lmet lctl 4)
+    (5)         (multi lmet lctl 5)
+    (6)         nop0
+    (7)         nop0
+    (8)         nop0
+    (9)         nop0
+    (0)         nop0
+
+    (spc)       (multi lmet spc)
+
+    (b a r)     (multi lctl f2)         ;; focus menu bar
+    (d e s k)   (multi @dupr d)         ;; show desktop
+    (d o c k)   (multi lctl f3)         ;; focus dock
+    (d w)       (multi lalt bspc)       ;; delete word
+    (f i n d)   (multi lmet lsft spc)   ;; find in finder
+    (h e l p)   (multi @dupr h)         ;; open application help
+    (i n v)     (multi @dupr i)         ;; invert colors
+    (k e y)     (multi @supr k)         ;; KeyCastr show keys
+    (m c)       @mc                     ;; mission control
+    (n c)       (multi @dupr ])         ;; notification center
+    (n o t e)   (multi @dupr n)         ;; new quick note
+)
+
+(defseq
+    the         (t spc)
+    The         (lsft t spc)
+    that        (t h spc)
+    That        (lsft t h spc)
+)
+(defvirtualkeys
+    the         (macro t h e spc)
+    The         (macro S-t h e spc)
+    that        (macro t h a t spc)
+    That        (macro S-t h a t spc)
+)
+
 
