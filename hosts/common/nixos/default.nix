@@ -1,6 +1,7 @@
 {
   imports = [
     ./auto-upgrade.nix
+    ./clamav.nix
     ./network.nix
     ./nix.nix
     ./no-wait-online.nix # mitigate NetworkManager Wait-Online failure
