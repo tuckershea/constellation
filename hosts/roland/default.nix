@@ -40,6 +40,7 @@
   
     directories = [
       "/var/log"
+      "/var/lib/nixos"  # preserve uids/gids between reboots
     ];
   };
 }
