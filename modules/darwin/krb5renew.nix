@@ -20,6 +20,7 @@ in {
       serviceConfig = {
         Label = "org.tuckershea.krb5renew";
         StartInterval = 5 * 60; # every 5 minutes
+        UserName = "tuckershea";
       };
 
       command = "kinit -R -c FILE:/Users/tuckershea/krb5-ccache";
