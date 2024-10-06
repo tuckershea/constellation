@@ -30,6 +30,7 @@
       "1password"
       "arc"
       "discord"
+      "inkscape"
       "keepingyouawake"
       "keycastr"
       "messenger"
