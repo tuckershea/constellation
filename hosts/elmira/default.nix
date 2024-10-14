@@ -29,6 +29,8 @@
     casks = [
       "1password"
       "arc"
+      "betterdisplay"
+      "bettertouchtool"
       "discord"
       "inkscape"
       "keepingyouawake"
