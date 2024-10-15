@@ -47,10 +47,10 @@
 
 (deflayer super
     esc  brdn brup f13  f14  f15  f16  prev pp   next mute vold  volu
-    lsgt @su1 @su2 @su3 @su4 @su5 @su6 @su7 @su8 @su9 @su0 -    =    bspc
-    tab  @suq @suw @sue @sur @sut @suy @suu @sui @suo @sup [    ]    \
-    _    @sua @sus @sud @suf @sug @suh @suj @suk @sul ;    '    ret
-    @suls grv @suz @sux @suc @suv @sub @sun @sum ,    .    /    _   
+    lsgt  @su1 @su2 @su3 @su4 @su5 @su6 @su7 @su8 @su9 @su0 @su- @su= bspc
+    @sutb @suq @suw @sue @sur @sut @suy @suu @sui @suo @sup [    ]    \
+    _     @sua @sus @sud @suf @sug @suh @suj @suk @sul ;    '    ret
+    @suls  grv @suz @sux @suc @suv @sub @sun @sum ,    .    /    _   
     _    _    _    _              @susp          _    _   
 )
 
@@ -93,6 +93,10 @@
     su9 (chord super 9)
     su0 (chord super 0)
 
+    sutb (chord super tab)
+    su- (chord super -)
+    su= (chord super =)
+
     suls (chord super lsft)
     susp (chord super spc)
 )
@@ -107,11 +111,15 @@
     (f)         (multi @supr f)         ;; homerow find
     (lsft f)    (multi @dupr f)         ;; homerow search
     (g)         nop0
-    (h)         (multi @dupr 1)         ;; switch to space 1
+    (h)         (multi @supr h)         ;; aerospace
+    (lsft h)    (multi @dupr h)         ;; aerospace
     (i)         nop0
-    (j)         (multi @dupr lft)       ;; switch space left
-    (k)         (multi @dupr rght)      ;; switch space right
-    (l)         nop0
+    (j)         (multi @supr j)         ;; aerospace
+    (lsft j)    (multi @dupr j)         ;; aerospace
+    (k)         (multi @supr k)         ;; aerospace
+    (lsft k)    (multi @dupr k)         ;; aerospace
+    (l)         (multi @supr l)         ;; aerospace
+    (lsft l)    (multi @dupr l)         ;; aerospace
     (m)         nop0
     (n)         nop0
     (o)         nop0
@@ -127,18 +135,32 @@
     (y)         nop0
     (z)         nop0
 
-    (1)         nop0
-    (2)         nop0
-    (3)         (multi lmet lctl 3)     ;; screenshot bindings
-    (lsft 3)    (multi lsft lmet lctl 3)
-    (4)         (multi lmet lctl 4)
-    (lsft 4)    (multi lsft lmet lctl 4)
-    (5)         (multi lmet lctl 5)
-    (6)         nop0
-    (7)         nop0
-    (8)         nop0
-    (9)         nop0
+    (1)         (multi @supr 1)         ;; aerospace
+    (lsft 1)    (multi @dupr 1)         ;; aerospace
+    (2)         (multi @supr 2)         ;; aerospace
+    (lsft 2)    (multi @dupr 2)         ;; aerospace
+    (3)         (multi @supr 3)         ;; aerospace
+    (lsft 3)    (multi @dupr 3)         ;; aerospace
+    (4)         (multi @supr 4)         ;; aerospace
+    (lsft 4)    (multi @dupr 4)         ;; aerospace
+    (5)         (multi @supr 5)         ;; aerospace
+    (lsft 5)    (multi @dupr 5)         ;; aerospace
+    (6)         (multi @supr 6)         ;; aerospace
+    (lsft 6)    (multi @dupr 6)         ;; aerospace
+    (7)         (multi @supr 7)         ;; aerospace
+    (lsft 7)    (multi @dupr 7)         ;; aerospace
+    (8)         (multi @supr 8)         ;; aerospace
+    (lsft 8)    (multi @dupr 8)         ;; aerospace
+    (9)         (multi @supr 9)         ;; aerospace
+    (lsft 9)    (multi @dupr 9)         ;; aerospace
     (0)         nop0
+
+    (tab)      (multi @supr tab )       ;; aerospace
+    (lsft tab) (multi @dupr tab)        ;; aerospace
+    (-)       (multi @supr -)           ;; aerospace
+    (lsft -)  (multi @dupr -)           ;; aerospace
+    (=)       (multi @supr =)           ;; aerospace
+    (lsft =)  (multi @dupr =)           ;; aerospace
 
     (spc)       (multi lmet spc)
 
