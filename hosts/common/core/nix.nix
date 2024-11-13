@@ -8,7 +8,6 @@
 {
   nix = {
     settings = {
-      auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
       warn-dirty = false;
 
@@ -22,6 +21,12 @@
         "https://tuckershea.cachix.org"
       ];
     };
+
+    optimise.automatic = true;
+    # optimise every Monday morning
+    # customized in hosts/common/darwin/nix.nix
+    # and hosts/common/nixos/nix.nix
+
 
     gc = {
       automatic = true;
