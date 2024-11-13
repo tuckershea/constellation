@@ -28,6 +28,7 @@
     ];
     casks = [
       "1password"
+      "alt-tab"
       "arc"
       "betterdisplay"
       "bettertouchtool"
