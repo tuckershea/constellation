@@ -34,6 +34,7 @@
     htop
     less
     neofetch
+    openconnect
     poetry
     sd
     tailscale
