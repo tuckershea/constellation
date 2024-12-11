@@ -36,9 +36,12 @@
       "inkscape"
       "keepingyouawake"
       "keycastr"
+      "little-snitch"
       "messenger"
+      "obs"
       "rectangle"
       "slack"
+      "zen-browser"
     ];
   };
 
