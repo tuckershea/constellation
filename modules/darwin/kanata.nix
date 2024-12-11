@@ -44,8 +44,8 @@ in {
     in {
       path = [config.environment.systemPath];
 
-      serviceConfig.ProgramArguments =
-        ["${cfg.package}/bin/kanata" "--cfg" "${config_file}"];
+      command =
+        "${cfg.package}/bin/kanata --cfg ${config_file}";
       serviceConfig.KeepAlive = true;
       serviceConfig.ProcessType = "Interactive";
     };
