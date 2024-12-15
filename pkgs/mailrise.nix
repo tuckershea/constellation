@@ -14,7 +14,7 @@ pkgs.python3Packages.buildPythonApplication rec {
   dependencies = with pkgs.python3Packages; [
     apprise
     aiosmtpd
-    PyYAML
+    pyyaml
   ];
 
 
