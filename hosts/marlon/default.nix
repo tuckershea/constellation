@@ -10,6 +10,7 @@
     ./disks.nix
     ./docker.nix
     ./hardware-configuration.nix
+    ./mailrise.nix
     ./secrets.nix
     ./terraria.nix
 

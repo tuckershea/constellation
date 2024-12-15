@@ -11,6 +11,11 @@ creation_rules:
       - age:
         - *elmira
         - *marlon
+  - path_regex: hosts/marlon/mailrise.yaml.enc$
+    key_groups:
+      - age:
+        - *elmira
+        - *marlon
   - path_regex: hosts/roland/secrets.yaml$
     key_groups:
       - age:
