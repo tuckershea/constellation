@@ -20,7 +20,7 @@
   };
 
   # CIS Independent 1.1.22
-  services.autofs.enable
+  services.autofs.enable = false;
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
