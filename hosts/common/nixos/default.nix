@@ -11,4 +11,7 @@
     ./sudo-no-password.nix # don't require password for sudo
     ./tailscale.nix
   ];
+
+  # Prefer full NTP for higher-accuracy time
+  services.chrony.enable = true;
 }
