@@ -47,7 +47,7 @@
 
   networking.computerName = "elmira";
   networking.hostName = "elmira.constellation.tuckershea.com";
-  networking.localHostName = "elmira.local";
+  networking.localHostName = "elmira";
 
   services.keep-hostname.enable = true;
   services.krb5renew.enable = true;
