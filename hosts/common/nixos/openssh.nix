@@ -4,13 +4,6 @@
   ...
 }:
 {
-  services.openssh = {
-    enable = true;
-    ports = [22]; # change this later?
-
-    settings = {
-      PermitRootLogin = "prohibit-password";
-      PasswordAuthentication = false;
-    };
-  };
+  services.openssh.enable = true;
+  # Hardening is configured in ./cis-hardening.nix
 }
