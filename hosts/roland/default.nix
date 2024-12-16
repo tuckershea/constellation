@@ -20,6 +20,7 @@
   ];
 
   networking.hostName = "roland";
+  networking.domain = "constellation.tuckershea.com";
   networking.hostId = "d310061c";
 
   system.stateVersion = "23.11";
