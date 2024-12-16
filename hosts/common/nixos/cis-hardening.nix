@@ -24,7 +24,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
-  nix.settings.allowed-users = [ "@users" ];
+  nix.settings.allowed-users = [ "@wheel" ];
 
   environment.memoryAllocator.provider = "scudo";
   environment.variables.SCUDO_OPTIONS = "ZeroContents=1";
