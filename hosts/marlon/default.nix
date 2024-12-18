@@ -11,6 +11,7 @@
     ./docker.nix
     ./hardware-configuration.nix
     ./mailrise.nix
+    ./minecraft.nix
     ./secrets.nix
     ./terraria.nix
 
