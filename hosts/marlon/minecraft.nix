@@ -24,7 +24,12 @@
 
   environment.persistence."/persist" = {
     directories = [
-      "/var/lib/minecraft"  # should be moved to /srv/minecraft
+      {
+        directory = "/var/lib/minecraft";
+        user = "minecraft";
+        group = "minecraft";
+        mode = "0700";
+      }
     ];
   };
 }
