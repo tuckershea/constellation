@@ -43,7 +43,13 @@
     # Note: we don't use extraUpFlags --reset because
     # tailscale up is only re-run when the machine is not connected
     # to the tailnet, not on every configuration change.
+    extraDaemonFlags = [
+      "--statedir=/var/lib/tailscale"
+    ];
     extraSetFlags = [
+      "--webclient=false"
+    ];
+    extraUpFlags = [
       "--accept-dns"
       "--accept-risk=all"
       "--accept-routes"
@@ -54,10 +60,8 @@
       "--hostname=${config.networking.hostName}-${config.networking.hostId}"
       "--shields-up=false"
       "--ssh=false"
-      "--webclient=false"
-    ];
-    extraUpFlags = [
       "--timeout=30s"
+      "--reset"
     ];
   };
 
@@ -74,6 +78,7 @@
     directories = [
       "/var/log"
       "/var/lib/nixos"  # preserve uids/gids between reboots
+      "/var/lib/tailscale"
     ];
   };
 }
