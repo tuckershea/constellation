@@ -6,6 +6,28 @@ permissions:
   pull-requests: write
 
 jobs:
+  check:
+    name: "nix flake check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v30
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - uses: cachix/cachix-action@v15
+        with:
+          name: tuckershea
+          skipPush: true
+          extraPullNames: nix-community
+
+      - name: Check flake
+        run: nix flake check
+
   build:
     if: github.event.pull_request.draft == false
     name: "Build ${{ matrix.target }}"
@@ -22,8 +44,6 @@ jobs:
             target: roland
           - os: ubuntu-latest
             target: vic
-          - os: ubuntu-latest
-            target: tuffy-oracle-ash-01
 
     steps:
       - name: Checkout
