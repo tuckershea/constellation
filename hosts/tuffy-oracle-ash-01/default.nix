@@ -25,22 +25,6 @@
 
   users.mutableUsers = false;
 
-  environment.persistence."/persist" = {
-    hideMounts = true;
-    files = [
-      "/etc/machine-id"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-    ];
-
-    directories = [
-      "/var/log"
-      "/var/lib/nixos"  # preserve uids/gids between reboots
-    ];
-  };
-
   services.tailscaleAutoconnect.enable = lib.mkForce false;
   services.tailscale = {
     enable = true;
