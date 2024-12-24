@@ -4,6 +4,7 @@ keys:
     - &marlon age1mxeanghmkfjqjcs8n3vpy952gysrwhmkk7ptrtsxqsuxvsqh83uqnfh0tl
     - &vic age1fu6wm42w4ke6ecwhwwqv7arfgn5spt7yzkj5rcassa0l0vyqgg4snyvv7m
     - &roland age19zdq4zn9ftqujq79fra2a2fe8ksnjag78g2rhlcp9fa98cuy3uhqsqmzwq
+    - &tuffy-oracle-ash-01 age1n0z4v6p6epsxhkpwcteglpgwum2z63axpkqkr7jd44dmpewzru2qvzjkkg
 
 creation_rules:
   - path_regex: hosts/marlon/secrets.yaml$
@@ -26,4 +27,9 @@ creation_rules:
       - age:
         - *elmira
         - *vic
+  - path_regex: hosts/tuffy-oracle-ash-01/secrets.yaml$
+    key_groups:
+      - age:
+        - *elmira
+        - *tuffy-oracle-ash-01
 

@@ -117,6 +117,24 @@
       ];
     };
 
+    nixosConfigurations."tuffy-oracle-ash-01" = nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit (self) inputs outputs;};
+      modules = [
+        ./hosts/tuffy-oracle-ash-01
+        sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
+        {
+          home-manager.users.tuckershea.imports = [
+            ./home/tuckershea/shell
+          ];
+          home-manager.extraSpecialArgs = {inherit inputs outputs;};
+        }
+      ];
+    };
+
     top =
           let
             nixtop = inputs.nixpkgs.lib.genAttrs
