@@ -22,6 +22,8 @@ jobs:
             target: roland
           - os: ubuntu-latest
             target: vic
+          - os: ubuntu-latest
+            target: tuffy-oracle-ash-01
 
     steps:
       - name: Checkout
