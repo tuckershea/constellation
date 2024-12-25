@@ -47,6 +47,11 @@
         flake = inputs.nixpkgs;
       };
     };
+
+    # Since we are using flakes for most everything,
+    # remove channels to prevent heaps of warnings
+    # on systems without initialized channels
+    channel.enable = false;
   };
 
   nixpkgs = {
