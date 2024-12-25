@@ -117,11 +117,11 @@
       ];
     };
 
-    nixosConfigurations."tuffy-oracle-ash-01" = nixosSystem {
+    nixosConfigurations."tuffy-use-ora-01" = nixosSystem {
       system = "aarch64-linux";
       specialArgs = {inherit (self) inputs outputs;};
       modules = [
-        ./hosts/tuffy-oracle-ash-01
+        ./hosts/tuffy-use-ora-01
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
