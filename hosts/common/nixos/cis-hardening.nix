@@ -39,6 +39,12 @@
 
   # This is required by podman to run containers in rootless mode.
   security.unprivilegedUsernsClone = config.virtualisation.containers.enable;
+  # Disabling user namespaces causes a logrotate configuration check
+  # to fail. In order to build logrotate configurations and thus NixOS
+  # systems on such machines, we need to disable the check.
+  # As we cannot vary the configuration by the build machine, we
+  # must globally disable it.
+  services.logrotate.checkConfig = false;
 
   security.virtualisation.flushL1DataCache = "always";
 
