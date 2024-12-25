@@ -18,13 +18,19 @@
     ../common/users/tuckershea
   ];
 
-  networking.hostName = "tuffy-oracle-ash-01";
+  networking.hostName = "tuffy-use-ora-01";
   networking.domain = "constellation.tuckershea.com";
   networking.hostId = "97711b5e";
 
   system.stateVersion = "24.11";
 
   users.mutableUsers = false;
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 100;
+  };
 
   services.tailscaleAutoconnect.enable = lib.mkForce false;
   services.tailscale = {
@@ -51,7 +57,7 @@
       "--advertise-routes="
       "--exit-node="
       "--exit-node-allow-lan-access=false"
-      "--hostname=${config.networking.hostName}-${config.networking.hostId}"
+      "--hostname=${config.networking.hostName}"
       "--shields-up=false"
       "--ssh=false"
       "--timeout=30s"
