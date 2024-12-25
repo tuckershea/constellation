@@ -118,7 +118,7 @@
     };
 
     nixosConfigurations."tuffy-oracle-ash-01" = nixosSystem {
-      system = "x86_64-linux";
+      system = "aarch64-linux";
       specialArgs = {inherit (self) inputs outputs;};
       modules = [
         ./hosts/tuffy-oracle-ash-01
