@@ -81,4 +81,12 @@
       "/var/lib/tailscale"
     ];
   };
+
+  environment.persistence."/big-persist" = {
+    hideMounts = true;
+    files = [
+    ];
+    directories = [
+    ];
+  };
 }
