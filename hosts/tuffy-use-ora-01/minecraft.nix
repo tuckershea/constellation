@@ -1,4 +1,7 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 {
   environment.persistence."/big-persist" = {
     directories = [
