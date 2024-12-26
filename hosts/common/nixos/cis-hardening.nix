@@ -24,7 +24,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
-  nix.settings.allowed-users = [ "@wheel" ];
+  users.groups.nixusers = {};
+  nix.settings.allowed-users = [ "@nixusers" ];
 
   environment.memoryAllocator.provider = "scudo";
   environment.variables.SCUDO_OPTIONS = "ZeroContents=1";
@@ -152,8 +153,10 @@
     "net.ipv6.conf.default.accept_ra" = 0;
   };
 
+  users.groups.sshusers = {};
   services.openssh = {
     settings = {
+      AllowGroups = [ "sshusers" ];
       PermitRootLogin = "no";
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
