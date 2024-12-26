@@ -21,7 +21,7 @@ in {
     // lib.optionalAttrs stdenv.isLinux {
       group = "tuckershea";
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "nixusers" "sshusers" ];
     };
 
   users.groups.tuckershea = {};
