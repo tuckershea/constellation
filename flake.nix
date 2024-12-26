@@ -23,6 +23,9 @@
   
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -35,6 +38,7 @@
     impermanence,
     disko,
     nix-index-database,
+    nix-minecraft,
   }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
@@ -126,6 +130,7 @@
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
+        nix-minecraft.nixosModules.minecraft-servers
         {
           home-manager.users.tuckershea.imports = [
             ./home/tuckershea/shell
