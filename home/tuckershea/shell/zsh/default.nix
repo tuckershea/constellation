@@ -54,6 +54,8 @@
             if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [[ -z "$SSH_CONNECTION" ]] then
               ZSH_TMUX_AUTOSTART='true'
             fi
+
+            . "$HOME/.cargo/env"
     '';
 
     sessionVariables = {

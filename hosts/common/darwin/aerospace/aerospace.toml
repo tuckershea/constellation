@@ -63,6 +63,11 @@ outer.right =      0
 1 = 'built-in'
 2 = 'built-in'
 3 = 'built-in'
+4 = 'built-in'
+
+7 = 'secondary'
+8 = 'secondary'
+9 = 'secondary'
 10 = 'secondary'
 
 # 'main' binding mode declaration

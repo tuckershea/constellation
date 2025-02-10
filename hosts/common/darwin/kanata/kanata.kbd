@@ -1,4 +1,5 @@
 ;; A config that maps caps lock to esc when tapped and super when held
+;; Random string for regeneration: aaa
 
 (defcfg
   process-unmapped-keys yes
@@ -153,7 +154,8 @@
     (lsft 8)    (multi @dupr 8)         ;; aerospace
     (9)         (multi @supr 9)         ;; aerospace
     (lsft 9)    (multi @dupr 9)         ;; aerospace
-    (0)         nop0
+    (0)         (multi @supr 0)         ;; aerospace
+    (lsft 0)    (multi @dupr 0)         ;; aerospace
 
     (tab)      (multi @supr tab )       ;; aerospace
     (lsft tab) (multi @dupr tab)        ;; aerospace
@@ -182,12 +184,16 @@
     The         (lsft t spc)
     that        (t h spc)
     That        (lsft t h spc)
+    multiplexer (m u x spc)
+    Multiplexer (lsft m u x spc)
 )
 (defvirtualkeys
     the         (macro t h e spc)
     The         (macro S-t h e spc)
     that        (macro t h a t spc)
     That        (macro S-t h a t spc)
+    multiplexer (macro m u l t i p l e x e r spc)
+    Multiplexer (macro S-m u l t i p l e x e r spc)
 )
 
 
