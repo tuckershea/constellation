@@ -11,6 +11,7 @@
     ./neovim.nix
     ./nix-index.nix
     ./ripgrep.nix
+    ./secrets.nix
     ./thefuck.nix
     ./tmux
     ./zsh

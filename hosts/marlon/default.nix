@@ -12,7 +12,7 @@
     ./docker.nix
     ./hardware-configuration.nix
     ./mailrise.nix
-    ./secrets.nix
+    ./secrets
     ./terraria.nix
 
     ../common/core

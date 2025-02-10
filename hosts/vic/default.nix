@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./secrets.nix
+    ./secrets
 
     ../common/core
     ../common/nixos

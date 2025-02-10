@@ -11,7 +11,7 @@
     ./disks.nix
     ./hardware-configuration.nix
     ./minecraft.nix
-    ./secrets.nix
+    ./secrets
 
     ../common/core
     ../common/nixos
