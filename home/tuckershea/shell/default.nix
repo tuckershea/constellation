@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./atuin
     ./fzf.nix
     ./git.nix
     ./jj
