@@ -1,35 +1,48 @@
 keys:
   - &hosts:
-    - &elmira age1r3gh0cyefzalugcqd3jvnxjzkhv70ph2ag7438vuvk5xlx7rryrs7pvfpe
-    - &marlon age1mxeanghmkfjqjcs8n3vpy952gysrwhmkk7ptrtsxqsuxvsqh83uqnfh0tl
-    - &vic age1fu6wm42w4ke6ecwhwwqv7arfgn5spt7yzkj5rcassa0l0vyqgg4snyvv7m
-    - &roland age19zdq4zn9ftqujq79fra2a2fe8ksnjag78g2rhlcp9fa98cuy3uhqsqmzwq
-    - &tuffy-oracle-ash-01 age1n0z4v6p6epsxhkpwcteglpgwum2z63axpkqkr7jd44dmpewzru2qvzjkkg
+    - &tuckershea_AT_elmira age1r3gh0cyefzalugcqd3jvnxjzkhv70ph2ag7438vuvk5xlx7rryrs7pvfpe
+    - &tuckershea_AT_marlon age1vmgvz0fe5j9387xmjga0fvdgt8hfz7msyu57d970c333slr82qqq48rvss
+    - &tuckershea_AT_roland age17s2rxhehef4xduzz6nchrrds0mhktzufnu0q7s6rqv48z8efasvsfvay60
+    - &tuckershea_AT_vic age1849f5hc9sk6m372durn8rhkhczdskqd8ux3emc8rd47txyhkmstsx5hmxq
+    - &tuckershea_AT_tuffy-use-ora-01 age1kv7hdt6mmwxaspdeep97qyrtq8csxd52lcay9f3aeefj46m304ksmc048m
+
+    - &root_AT_marlon age1mxeanghmkfjqjcs8n3vpy952gysrwhmkk7ptrtsxqsuxvsqh83uqnfh0tl
+    - &root_AT_vic age1fu6wm42w4ke6ecwhwwqv7arfgn5spt7yzkj5rcassa0l0vyqgg4snyvv7m
+    - &root_AT_roland age19zdq4zn9ftqujq79fra2a2fe8ksnjag78g2rhlcp9fa98cuy3uhqsqmzwq
+    - &root_AT_tuffy-use-ora-01 age1n0z4v6p6epsxhkpwcteglpgwum2z63axpkqkr7jd44dmpewzru2qvzjkkg
 
 creation_rules:
-  - path_regex: hosts/marlon/secrets.yaml$
+  - path_regex: (\+\w+)*\+marlon(\+\w+)*.(enc|yaml|json)$
     key_groups:
       - age:
-        - *elmira
-        - *marlon
+        - *tuckershea_AT_elmira
+        - *root_AT_marlon
   - path_regex: hosts/marlon/mailrise.yaml.enc$
     key_groups:
       - age:
-        - *elmira
-        - *marlon
-  - path_regex: hosts/roland/secrets.yaml$
+        - *tuckershea_AT_elmira
+        - *root_AT_marlon
+  - path_regex: (\+\w+)*\+roland(\+\w+)*.(enc|yaml|json)$
     key_groups:
       - age:
-        - *elmira
-        - *roland
-  - path_regex: hosts/vic/secrets.yaml$
+        - *tuckershea_AT_elmira
+        - *root_AT_roland
+  - path_regex: (\+\w+)*\+vic(\+\w+)*.(enc|yaml|json)$
     key_groups:
       - age:
-        - *elmira
-        - *vic
-  - path_regex: hosts/tuffy-oracle-ash-01/secrets.yaml$
+        - *tuckershea_AT_elmira
+        - *root_AT_vic
+  - path_regex: (\+\w+)*\+tuffy-use-ora-01(\+\w+)*.(enc|yaml|json)$
     key_groups:
       - age:
-        - *elmira
-        - *tuffy-oracle-ash-01
+        - *tuckershea_AT_elmira
+        - *root_AT_tuffy-use-ora-01
+  - path_regex: (\+\w+)*\+tuckershea(\+\w+)*.(enc|yaml|json)$
+    key_groups:
+      - age:
+        - *tuckershea_AT_elmira
+        - *tuckershea_AT_marlon
+        - *tuckershea_AT_roland
+        - *tuckershea_AT_vic
+        - *tuckershea_AT_tuffy-use-ora-01
 
