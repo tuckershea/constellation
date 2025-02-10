@@ -1,7 +1,6 @@
 {
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
     defaultCommand = "fd --type f --hidden --no-ignore";
     fileWidgetCommand = "fd --type f --hidden --no-ignore";
     # fileWidgetOptions = [ "--preview='head -200 {}'" ];
