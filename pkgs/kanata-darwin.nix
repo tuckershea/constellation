@@ -1,11 +1,11 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation rec {
   name = "kanata";
-  version = "v1.7.0-prerelease-1";
+  version = "1.8.0";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/jtroo/kanata/releases/download/${version}/kanata_macos_arm64";
-    sha256 = "sha256-y3ZD9ygB8SSTVpL9e2MqDfkEocB+J/EYhgUEiGLr3SM=";
+    url = "https://github.com/jtroo/kanata/releases/download/v${version}/kanata_macos_arm64";
+    sha256 = "sha256-oHIpb1Hvi3gJUYnYJWXGs1QPoHerdWCA1+bHjG4QAQ4=";
   };
 
   phases = ["installPhase" "patchPhase"];
