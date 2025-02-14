@@ -7,7 +7,7 @@
   imports = [
     ./fzf.nix
     ./git.nix
-    ./jj.nix
+    ./jj
     ./neovim.nix
     ./nix-index.nix
     ./ripgrep.nix
@@ -42,10 +42,6 @@
     sd
     tailscale
     wget
-
-    # hack to get this working sob
-    # it doesn't work sob
-    (pkgs.callPackage ../../../pkgs/jujutsu-unstable.nix {})
 
     # Languages and tooling
     poetry
