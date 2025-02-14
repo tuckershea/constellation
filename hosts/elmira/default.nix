@@ -45,6 +45,7 @@
       "rectangle"
       "skim"
       "slack"
+      "swiftbar"
       "zen-browser"
     ];
   };
