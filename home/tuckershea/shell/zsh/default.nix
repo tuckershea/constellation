@@ -38,7 +38,6 @@
         "fzf"
         "pyenv"
         "rbenv"
-        "tmux"
       ];
     };
 
@@ -48,11 +47,6 @@
             if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]
       ; then
               source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-            fi
-
-            # No tmux in Jetbrains or when ssh'd into
-            if [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [[ -z "$SSH_CONNECTION" ]] then
-              ZSH_TMUX_AUTOSTART='true'
             fi
 
             . "$HOME/.cargo/env"
