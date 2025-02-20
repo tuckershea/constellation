@@ -18,7 +18,6 @@
         # Disable new tabs + windows, since I use terminal
         # next to a browser and alacritty glitches if I cmd+T it
         { key="T"; mods="Command"; action="None"; }
-        { key="N"; mods="Command"; action="None"; }
       ];
     };
   };
