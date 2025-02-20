@@ -38,6 +38,7 @@
       "keepingyouawake"
       "keycastr"
       "little-snitch"
+      "lm-studio"
       "messenger"
       "obs"
       "prismlauncher"
