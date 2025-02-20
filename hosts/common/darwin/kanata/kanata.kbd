@@ -1,5 +1,4 @@
 ;; A config that maps caps lock to esc when tapped and super when held
-;; Random string for regeneration: aaa
 
 (defcfg
   process-unmapped-keys yes
@@ -14,13 +13,22 @@
     fn   lctl lalt lmet           spc            rmet ralt
 )
 
+(defvar
+    tap-timeout 100
+    hold-timeout 200
+    tt $tap-timeout
+    ht $hold-timeout
+)
+
 (defalias
-    fnl (tap-hold 200 200 fn (layer-toggle fn))
+    fnl (tap-hold $tt $ht fn (layer-toggle fn))
     ces (tap-hold-press 200 200 esc (layer-while-held super))
     abr sldr
 
     supr (multi lctl lalt lmet)
     dupr (multi shft @supr)
+
+    hma (tap-hold 200 200 a lmet)
 
     mc f13
     src f14
