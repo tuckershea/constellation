@@ -41,13 +41,6 @@
           set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on'
         '';
       }
-      {
-        plugin = tmuxPlugins.dracula;
-        extraConfig = ''
-          set -g @dracula-show-powerline true
-          set -g @dracula-refresh-rate 10
-        '';
-      }
     ];
   };
 }
