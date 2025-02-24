@@ -14,7 +14,6 @@
 
     outputs.darwinModules.keep-hostname
     outputs.darwinModules.krb5renew
-    outputs.darwinModules.touchid
 
     ../common/users/tuckershea
   ];
@@ -57,6 +56,13 @@
 
   services.keep-hostname.enable = true;
   services.krb5renew.enable = true;
+
+  security.pam.services.sudo_local = {
+    enable = true;
+    reattach = true;
+    touchIdAuth = true;
+    watchIdAuth = true;
+  };
 
   system.stateVersion = 4;
 }
