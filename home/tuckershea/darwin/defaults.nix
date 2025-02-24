@@ -5,6 +5,8 @@
     NSGlobalDomain = {
       # Add a context menu item for showing the Web Inspector in web views
       WebKitDeveloperExtras = true;
+      InitialKeyRepeat = 14;  # repeat 105ms from keydown
+      KeyRepeat = 2;  # repeat every 30ms
     };
     "com.apple.desktopservices" = {
       # Avoid creating .DS_Store files on network or USB volumes
