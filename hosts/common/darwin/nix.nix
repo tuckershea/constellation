@@ -12,4 +12,11 @@
     Minute = 15;
     Weekday = 1;
   }];
+
+  nix.linux-builder = {
+    enable = true;
+    ephemeral = true;
+#    systems = [ "aarch64-linux" ];
+  };
+  nix.settings.trusted-users = [ "@admin" ];
 }
