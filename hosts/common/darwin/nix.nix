@@ -17,6 +17,7 @@
     enable = true;
     ephemeral = true;
 #    systems = [ "aarch64-linux" ];
+    config.virtualisation.cores = 2;
   };
   nix.settings.trusted-users = [ "@admin" ];
 }
