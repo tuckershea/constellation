@@ -28,8 +28,6 @@
     supr (multi lctl lalt lmet)
     dupr (multi shft @supr)
 
-    hma (tap-hold 200 200 a lmet)
-
     mc f13
     src f14
     mic f15
