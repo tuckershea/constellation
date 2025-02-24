@@ -45,9 +45,11 @@
     wget
 
     # Languages and tooling
+    just
     poetry
     svlint
     texliveFull
+    typst
     uv
     verilator
   ];
@@ -66,4 +68,7 @@
             };
           }
         ];
+  
+  programs.direnv.enable = true;
+  programs.direnv.enableZshIntegration = true;
 }

@@ -32,6 +32,7 @@
       "betterdisplay"
       "bettertouchtool"
       "discord"
+      "double-commander"
       "inkscape"
       "itsycal"
       "keepingyouawake"
@@ -39,6 +40,7 @@
       "little-snitch"
       "lm-studio"
       "messenger"
+      "netnewswire"
       "obs"
       "prismlauncher"
       "raycast"
@@ -46,6 +48,7 @@
       "skim"
       "slack"
       "swiftbar"
+      "thunderbird"
       "zen-browser"
     ];
   };
