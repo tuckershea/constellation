@@ -49,7 +49,7 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup cachix
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: tuckershea
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
