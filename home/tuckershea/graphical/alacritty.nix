@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       general.import = [
-        "${pkgs.alacritty-theme}/dracula.toml"
+        "${pkgs.alacritty-theme}/share/alacritty-theme/dracula.toml"
       ];
 
       # Allow for truecolor
