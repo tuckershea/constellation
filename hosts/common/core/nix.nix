@@ -46,6 +46,15 @@
         from = { id = "nixpkgs"; type = "indirect"; };
         flake = inputs.nixpkgs;
       };
+      nur = {
+        from = { id = "nur"; type = "indirect"; };
+        flake = inputs.nur;
+      };
+      ts.to = {
+        type = "github";
+        owner = "tuckershea";
+        repo = "nur-packages";
+      };
     };
 
     # Since we are using flakes for most everything,
