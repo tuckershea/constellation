@@ -5,7 +5,7 @@
 }: {
   imports = [outputs.nixosModules.tailscale-autoconnect];
 
-  # Requires sops.secrets.tailscale_key to exist!
+  # Requires sops.secrets.tailscale_authkey to exist!
 
   services.tailscaleAutoconnect = {
     enable = true;

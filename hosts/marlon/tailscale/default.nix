@@ -14,7 +14,7 @@
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "server";
-    authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+    authKeyFile = config.sops.secrets.tailscale_authkey.path;
 
     # Reconfigure everything on restart to fake declarativeness
     # Note: we don't use extraUpFlags --reset because

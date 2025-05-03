@@ -47,6 +47,8 @@
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
     inherit (nixpkgs.lib) nixosSystem;
+
+    forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
     nixosModules = import ./modules/nixos;
     darwinModules = import ./modules/darwin;
@@ -159,5 +161,34 @@
               (attr: inputs.self.darwinConfigurations.${attr}.system);
           in
           nixtop // darwintop;
+
+    packages = forAllSystems(system:
+      let
+        pkgs = import nixpkgs { inherit system; overlays = [ nur.overlays.default ]; };
+      in
+        {
+          rotate-tailscale-keys = pkgs.writeShellApplication {
+            name = "rotate-tailscale-keys";
+            runtimeInputs = [
+              pkgs.sops
+              pkgs.nur.repos.tuckershea.get-authkey
+            ];
+            text = builtins.readFile ./bin/rotate_tailscale_keys.sh;
+          };
+        }
+    );
+
+    apps = forAllSystems (system:
+      let
+        pkgs = import nixpkgs { inherit system; overlays = [ nur.overlays.default ]; };
+        mkApp = program: {
+          type = "app";
+          program = "${self.packages.${system}.${program}}/bin/${program}";
+        };
+      in
+        {
+          rotate-tailscale-keys = mkApp "rotate-tailscale-keys";
+        }
+    );
   };
 }
