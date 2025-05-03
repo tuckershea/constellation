@@ -12,6 +12,7 @@
 
       window.startup_mode = "Windowed";
       window.decorations = "None";
+      window.option_as_alt = "OnlyLeft";
       font.normal.family = "JetBrainsMono Nerd Font Mono";
 
       keyboard.bindings = [
