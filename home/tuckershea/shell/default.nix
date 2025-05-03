@@ -71,4 +71,13 @@
   
   programs.direnv.enable = true;
   programs.direnv.enableZshIntegration = true;
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "dracula";
+      editor.line-number = "relative";
+      editor.bufferline = "multiple";
+    };
+  };
 }
