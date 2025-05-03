@@ -49,7 +49,7 @@
     poetry
     svlint
     texliveFull
-    (pkgs.callPackage ../../../pkgs/typst.nix {})
+    typst
     uv
     verilator
   ];
