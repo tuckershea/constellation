@@ -26,6 +26,9 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
+    
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -39,6 +42,7 @@
     disko,
     nix-index-database,
     nix-minecraft,
+    nur,
   }: let
     inherit (self) outputs;
     inherit (darwin.lib) darwinSystem;
@@ -65,6 +69,7 @@
           ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
+        nur.modules.darwin.default
       ];
     };
 
@@ -83,6 +88,7 @@
           ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
+        nur.modules.nixos.default
       ];
     };
 
@@ -101,6 +107,7 @@
           ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
+        nur.modules.nixos.default
       ];
     };
 
@@ -118,6 +125,7 @@
           ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
+        nur.modules.nixos.default
       ];
     };
 
@@ -137,6 +145,7 @@
           ];
           home-manager.extraSpecialArgs = {inherit inputs outputs;};
         }
+        nur.modules.nixos.default
       ];
     };
 
