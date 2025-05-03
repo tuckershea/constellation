@@ -7,7 +7,7 @@
     darwin.url = "github:lnl7/nix-darwin/d06cf700ee589527fde4bd9b91f899e7137c05a6";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/b431496538b0e294fbe44a1441b24ae8195c63f0";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:mic92/sops-nix";
