@@ -10,6 +10,7 @@
     ./disks.nix
     ./hardware-configuration.nix
     ./secrets
+    ./tailscale
 
     ../common/core
     ../common/nixos
@@ -26,8 +27,6 @@
   system.stateVersion = "23.11";
 
   users.mutableUsers = false;
-
-  services.tailscaleAutoconnect.ephemeral = true;
 
   environment.persistence."/persist" = {
     hideMounts = true;

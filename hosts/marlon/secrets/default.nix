@@ -1,5 +1,4 @@
 {
-  sops.secrets.tailscale_key.sopsFile = ./host_secrets.+marlon.yaml;
   sops.secrets.terraria_password.sopsFile = ./host_secrets.+marlon.yaml;
 
   sops.secrets.tuckershea_age_key = {
