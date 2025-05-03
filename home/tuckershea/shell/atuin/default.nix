@@ -29,7 +29,7 @@ in
   };
 
   # compatibility with zsh-vi-mode
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     zvm_after_init_commands+=('eval "$(${cfg.package}/bin/atuin init zsh ${flagsStr})"')
   '';
 
