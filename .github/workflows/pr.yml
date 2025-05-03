@@ -46,6 +46,14 @@ jobs:
             target: vic
 
     steps:
+      - name: Free disk space
+        run:  |
+              if [ "$RUNNER_OS" == "Linux" ]; then
+                curl -fsSL https://raw.githubusercontent.com/kou/arrow/e49d8ae15583ceff03237571569099a6ad62be32/ci/scripts/util_free_space.sh | bash
+              else
+                echo "Not doing anything for $RUNNER_OS"
+              fi
+
       - name: Checkout
         uses: actions/checkout@v4
 
