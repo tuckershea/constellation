@@ -34,6 +34,9 @@ jobs:
 
       - name: Rotate Tailscale keys
         id: rotate-keys
+        env:
+          TS_API_CLIENT_ID: ${{ secrets.TS_API_CLIENT_ID }}
+          TS_API_CLIENT_SECRET: ${{ secrets.TS_API_CLIENT_SECRET }}
         run: |
           # Run the key rotation script
           nix run .#rotate-tailscale-keys
