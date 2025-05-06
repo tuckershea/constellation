@@ -1,4 +1,8 @@
 {
+  outputs,
+  ...
+}:
+{
   imports = [
     ./auto-upgrade.nix
     ./cis-hardening.nix
@@ -10,6 +14,8 @@
     ./openssh.nix
     ./sudo-no-password.nix # don't require password for sudo
     ./tailscale.nix
+
+    outputs.nixosModules.hetzner
   ];
 
   # Prefer full NTP for higher-accuracy time
