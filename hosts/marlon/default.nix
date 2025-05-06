@@ -28,6 +28,13 @@
   networking.domain = "constellation.tuckershea.com";
   networking.hostId = "c8215d44";
 
+  platforms.hetzner = {
+    enable = true;
+
+    ipv6.enable = true;
+    ipv6.subnet = "2a01:4f9:c012:aeb7::/64";
+  };
+
   system.stateVersion = "23.11";
 
   users.mutableUsers = false;
