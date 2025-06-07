@@ -45,7 +45,7 @@ in {
       path = [config.environment.systemPath];
 
       command =
-        "taskpolicy -t 5 ${cfg.package}/bin/kanata --cfg ${config_file}";
+        "${cfg.package}/bin/kanata --cfg ${config_file}";
       serviceConfig.KeepAlive = true;
       serviceConfig.ProcessType = "Interactive";
       serviceConfig.Nice = -20;
