@@ -19,6 +19,7 @@ in
 
     settings = {
       key_path = config.sops.secrets.atuin_key.path;
+      session_path = config.sops.secrets.atuin_session.path;
 
       update_check = false;
       sync_frequency = "5m";
@@ -35,6 +36,14 @@ in
 
   sops.secrets.atuin_key = {
     sopsFile = ./atuin_key.+tuckershea.enc;
+    format = "binary";
+  };
+
+  # WARNING: the session file cannot have a newline at the end!
+  # Most conventional editors will attempt to add one, and some
+  # will not even show that they added one.
+  sops.secrets.atuin_session = {
+    sopsFile = ./atuin_session.+tuckershea.enc;
     format = "binary";
   };
 }
