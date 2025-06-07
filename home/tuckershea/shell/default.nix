@@ -13,7 +13,6 @@
     ./nix-index.nix
     ./ripgrep.nix
     ./secrets.nix
-    ./thefuck.nix
     ./tmux
     ./zsh
   ];
@@ -48,7 +47,6 @@
     just
     poetry
     svlint
-    texliveFull
     typst
     uv
     verilator
