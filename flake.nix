@@ -164,14 +164,14 @@
 
     packages = forAllSystems(system:
       let
-        pkgs = import nixpkgs { inherit system; overlays = [ nur.overlays.default ]; };
+        pkgs = import nixpkgs { inherit system; };
       in
         {
           rotate-tailscale-keys = pkgs.writeShellApplication {
             name = "rotate-tailscale-keys";
             runtimeInputs = [
               pkgs.sops
-              pkgs.nur.repos.tuckershea.get-authkey
+              pkgs.tailscale
             ];
             text = builtins.readFile ./bin/rotate_tailscale_keys.sh;
           };
@@ -180,7 +180,7 @@
 
     apps = forAllSystems (system:
       let
-        pkgs = import nixpkgs { inherit system; overlays = [ nur.overlays.default ]; };
+        pkgs = import nixpkgs { inherit system; };
         mkApp = program: {
           type = "app";
           program = "${self.packages.${system}.${program}}/bin/${program}";
