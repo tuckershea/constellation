@@ -34,8 +34,4 @@ in
     enable = true;
     settings = (builtins.fromTOML (builtins.readFile ./aerospace.toml));
   };
-
-  launchd.user.agents.aerospace.command = 
-          lib.mkForce ("taskpolicy -l 5 ${cfg.package}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
-          + (lib.optionalString (cfg.settings != { }) " --config-path ${configFile}"));
 }
