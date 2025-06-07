@@ -21,6 +21,9 @@
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
+    # Needed since activation now runs as root.
+    # Should revisit later to find a better system.
+    user = "tuckershea";
 
     brews = [
       "kstart"

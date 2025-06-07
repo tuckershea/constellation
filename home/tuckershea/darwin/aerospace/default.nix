@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.aerospace;
+  cfg = config.programs.aerospace;
 
   format = pkgs.formats.toml { };
   filterAttrsRecursive = pred: set:
@@ -30,8 +30,8 @@ let
   configFile = format.generate "aerospace.toml" (filterNulls cfg.settings);
 in
 {
-  services.aerospace = {
+  programs.aerospace = {
     enable = true;
-    settings = (builtins.fromTOML (builtins.readFile ./aerospace.toml));
+    userSettings = (builtins.fromTOML (builtins.readFile ./aerospace.toml));
   };
 }

@@ -3,6 +3,14 @@
 {
   targets.darwin.defaults = {
     NSGlobalDomain = {
+      # Font smoothing makes text seem bolder, this allows
+      # for thinner looking fonts on retina displays.
+      # e.g. https://www.reddit.com/r/MacOS/comments/16tow2w/psa_turn_off_font_smoothing/
+      # This is especially important for Alacritty which
+      # does not render correctly otherwise, but boy does
+      # it look nice everywhere else too.
+      AppleFontSmoothing = 0;  # render fonts correctly
+
       # Add a context menu item for showing the Web Inspector in web views
       WebKitDeveloperExtras = true;
       InitialKeyRepeat = 14;  # repeat 105ms from keydown
