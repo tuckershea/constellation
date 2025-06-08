@@ -27,12 +27,6 @@
 
   users.mutableUsers = false;
 
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 100;
-  };
-
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
