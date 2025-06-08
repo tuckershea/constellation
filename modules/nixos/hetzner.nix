@@ -46,10 +46,13 @@ in {
       inherit interface;
     };
     
-    networking.interfaces."${interface}".ipv6.addresses = mkIf cfg.ipv6.enable [
-      {
-        inherit address prefixLength;
-      }
-    ];
+    networking.interfaces."${interface}" = {
+      useDHCP = true;
+      ipv6.addresses = mkIf cfg.ipv6.enable [
+        {
+          inherit address prefixLength;
+        }
+      ];
+    };
   };
 }
