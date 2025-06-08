@@ -74,8 +74,44 @@
     enable = true;
     settings = {
       theme = "dracula";
-      editor.line-number = "relative";
-      editor.bufferline = "multiple";
+      editor = {
+        auto-pairs = false;
+        line-number = "relative";
+        bufferline = "multiple";
+        cursorline = true;
+        mouse = false;
+        rulers = [70];
+        soft-wrap.enable = true;
+        soft-wrap.wrap-indicator = "↩ ";
+        insert-final-newline = false;
+        file-picker.hidden = false;
+        # look at auto-save
+        # look at whitespace
+        # inline-diagnostics
+      };
     };
+    extraPackages = with pkgs; [
+      # bash
+      bash-language-server
+      # c/cpp (clangd)
+      clang-tools
+      # cmake
+      cmake-language-server
+      # docker
+      docker-language-server
+      docker-compose-language-service
+      # html
+      superhtml
+      # js/ts
+      typescript-language-server
+      # markdown
+      marksman
+      # nix
+      nil
+      # typst
+      tinymist
+      # yaml
+      yaml-language-server
+    ];
   };
 }
