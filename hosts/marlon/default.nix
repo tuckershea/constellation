@@ -12,6 +12,7 @@
     ./docker.nix
     ./hardware-configuration.nix
     ./mailrise.nix
+    ./minecraft.nix
     ./secrets
     ./tailscale
     ./terraria.nix
