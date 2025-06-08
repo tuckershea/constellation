@@ -18,6 +18,14 @@
     outputs.nixosModules.hetzner
   ];
 
+  # Really effective way of adding fast swap:
+  # most memory compresses pretty well.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 100;
+  };
+
   # Prefer full NTP for higher-accuracy time
   services.chrony.enable = true;
 }
