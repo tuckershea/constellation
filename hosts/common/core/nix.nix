@@ -14,11 +14,13 @@
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
         "tuckershea.cachix.org-1:a9DdtLF8DyqAHFV7VHlA7YvasP6wUMHdOygVyks3JGM="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
 
       substituters = [
         "https://cache.nixos.org/"
         "https://tuckershea.cachix.org"
+        "https://cache.garnix.io"
       ];
     };
 
