@@ -22,9 +22,18 @@
     ];
 
     plugins = with pkgs; [
-      tmuxPlugins.copycat
-      tmuxPlugins.yank
-      tmuxPlugins.resurrect
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-save 'S'
+        '';
+      }
+#       {
+#         plugin = tmuxPlugins.yank;
+#         extraConfig = ''
+#           set -g @yank_action 'copy-pipe'
+#         '';
+#       }
       {
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
