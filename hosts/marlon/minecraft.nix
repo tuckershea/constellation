@@ -1,9 +1,12 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
-  environment.persistence."/big-persist" = {
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+
+  environment.persistence."/persist" = {
     directories = [
       {
         directory = "/srv/minecraft";

@@ -10,7 +10,6 @@
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
-    ./minecraft.nix
     ./secrets
     ./tailscale
 
@@ -19,8 +18,6 @@
 
     ../common/users/tuckershea
   ];
-
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   networking.hostName = "tuffy-use-ora-01";
   networking.domain = "constellation.tuckershea.com";
