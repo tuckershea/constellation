@@ -40,6 +40,10 @@
 
   users.mutableUsers = false;
 
+  services.actual = {
+    enable = true;
+  };
+
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
