@@ -8,5 +8,12 @@
     group = "tuckershea";
     path = "/home/tuckershea/.age-key.txt";
   };
+
+  sops.secrets.cloudflare_dns_api_token = {
+    sopsFile = ./cloudflare_dns_api_token.env.+marlon.enc;
+    format = "binary";
+    owner = "tuckershea";
+    group = "tuckershea";
+  };
 }
 

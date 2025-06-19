@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./actual.nix
     ./boot.nix
     ./disks.nix
     ./docker.nix
@@ -39,10 +40,6 @@
   system.stateVersion = "23.11";
 
   users.mutableUsers = false;
-
-  services.actual = {
-    enable = true;
-  };
 
   security.acme = {
     acceptTerms = true;
