@@ -47,6 +47,19 @@
     defaults.renewInterval = "weekly";
   };
 
+  networking.dhcpcd.extraConfig = ''
+    noarp
+    option rapid_commit
+  '';
+
+  boot.blacklistedKernelModules = [
+    "cfg80211"
+    "rfkill"
+    "8021q"
+  ];
+
+  boot.initrd.systemd.enable = true;
+
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
