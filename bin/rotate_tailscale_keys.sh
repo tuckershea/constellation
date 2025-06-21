@@ -20,6 +20,7 @@ HOSTS=(
   "roland|tag:server|true"
   "tuffy-use-ora-01|tag:server|false"
   "vic|tag:server|false"
+  "spencer|tag:server|false"
 )
 
 for host_config in "${HOSTS[@]}"; do
