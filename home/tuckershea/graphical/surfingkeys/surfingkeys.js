@@ -245,14 +245,14 @@ removeSearchAlias("w", "s");
 removeSearchAlias("y", "s");
 removeSearchAlias("s", "s");
 
-api.addSearchAlias('p', 'Nix Packages', 'https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=', 'p', 'https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=', function(response) {
+api.addSearchAlias('p', 'Nix Packages', 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=', 'p', 'https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=', function(response) {
     var res = JSON.parse(response.text);
     return res.map(function(r){
         return r.phrase;
     });
 });
 
-api.addSearchAlias('o', 'NixOS Options', 'https://search.nixos.org/options?channel=24.05&size=50&sort=relevance&type=packages&query=', 'o', 'https://search.nixos.org/options?channel=24.05&size=50&sort=relevance&type=packages&query=', function(response) {
+api.addSearchAlias('o', 'NixOS Options', 'https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=packages&query=', 'o', 'https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=packages&query=', function(response) {
     var res = JSON.parse(response.text);
     return res.map(function(r){
         return r.phrase;
