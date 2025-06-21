@@ -7,7 +7,6 @@
   ...
 }: {
   imports = [
-    ./actual.nix
     ./boot.nix
     ./disks.nix
     ./docker.nix
