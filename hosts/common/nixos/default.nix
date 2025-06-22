@@ -27,4 +27,15 @@
 
   # Prefer full NTP for higher-accuracy time
   services.chrony.enable = true;
+
+  services.nginx = {
+    # Nice defaults
+    recommendedTlsSettings = true;
+    recommendedZstdSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedUwsgiSettings = true;
+    recommendedProxySettings = true;
+    recommendedBrotliSettings = true;
+  };
 }
