@@ -11,6 +11,7 @@
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
+    ./keycloak
     ./mailrise.nix
     ./secrets
     ./tailscale
@@ -73,6 +74,7 @@
       "/var/lib/tailscale"
       "/var/lib/acme"
       "/var/lib/systemd/timers"
+      config.services.postgresql.dataDir
     ];
   };
 }

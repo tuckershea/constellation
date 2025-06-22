@@ -16,11 +16,11 @@ set -euo pipefail
 
 HOSTS=(
   #name|tags|ephemeral?
-  "marlon|tag:public|false"
+  "marlon|tag:public,tag:public-keycloak|false"
   "roland|tag:private|true"
   "tuffy-use-ora-01|tag:public|false"
   "vic|tag:private|false"
-  "spencer|tag:private|false"
+  "spencer|tag:private,tag:private-keycloak|false"
 )
 
 for host_config in "${HOSTS[@]}"; do
