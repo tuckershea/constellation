@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ./keycloak
     ./mailrise.nix
+    ./paperless.nix
     ./secrets
     ./tailscale
 
