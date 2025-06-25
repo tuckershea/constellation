@@ -37,6 +37,7 @@
     htop
     less
     neofetch
+    ollama
     openconnect
     pre-commit
     sd
