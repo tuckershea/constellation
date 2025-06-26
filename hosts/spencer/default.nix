@@ -11,6 +11,7 @@
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
+    ./immich.nix
     ./keycloak
     ./mailrise.nix
     ./paperless.nix
