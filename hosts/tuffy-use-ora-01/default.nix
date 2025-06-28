@@ -10,6 +10,7 @@
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
+    ./minecraft.nix
     ./secrets
     ./tailscale
 
@@ -27,6 +28,13 @@
 
   users.mutableUsers = false;
 
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "acme" + "@" + "tuckershea.com";
+    defaults.renewInterval = "weekly";
+  };
+
+
   environment.persistence."/persist" = {
     hideMounts = true;
     files = [
@@ -41,6 +49,8 @@
       "/var/log"
       "/var/lib/nixos"  # preserve uids/gids between reboots
       "/var/lib/tailscale"
+      "/var/lib/acme"
+      "/var/lib/systemd/timers"
     ];
   };
 }

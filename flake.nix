@@ -160,6 +160,7 @@
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
+        nix-minecraft.nixosModules.minecraft-servers
         {
           home-manager.users.tuckershea.imports = [
             ./home/tuckershea/shell
