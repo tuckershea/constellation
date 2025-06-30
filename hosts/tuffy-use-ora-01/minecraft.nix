@@ -21,6 +21,16 @@
       }
     ];
   };
+  environment.persistence."/big-persist" = {
+    directories = [
+      {
+        directory = "/srv/minecraft/abtechminecraft/dynmap/web/tiles";
+        user = "minecraft";
+        group = "minecraft";
+        mode = "0700";
+      }
+    ];
+  };
 
   services.gate = {
     enable = true;

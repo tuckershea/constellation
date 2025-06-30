@@ -3,7 +3,7 @@
     disk = {
       a = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/wwn-0x60666d8363ae4cefa7140cee635f3106";
         content = {
           type = "gpt";
           partitions = {
@@ -41,6 +41,26 @@
                 type = "swap";
                 discardPolicy = "both";
                 resumeDevice = true;
+              };
+            };
+          };
+        };
+      };
+    
+      # how to add device not required for boot???
+      big-persist = {
+        type = "disk";
+        device = "/dev/disk/by-id/wwn-0x60cd12a44b0e47f8b677323f38bbd379";
+        content = {
+          type = "gpt";
+          partitions = {
+            data = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/big-persist";
+                mountOptions = [ "nofail" ];
               };
             };
           };
@@ -99,6 +119,7 @@
   fileSystems = {
     "/boot".neededForBoot = true;
     "/persist".neededForBoot = true;
+    "/big-persist".neededForBoot = true;
     "/nix".neededForBoot = true;
     "/".neededForBoot = true;
     "/tmp".neededForBoot = true;

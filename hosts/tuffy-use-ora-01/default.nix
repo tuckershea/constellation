@@ -53,4 +53,8 @@
       "/var/lib/systemd/timers"
     ];
   };
+
+  environment.persistence."/big-persist" = {
+    hideMounts = true;
+  };
 }
