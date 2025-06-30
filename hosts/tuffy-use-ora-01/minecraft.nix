@@ -72,8 +72,10 @@
       motd = "🐻 fly by night sound and light";
 
       max-players = 25;
-      # White list is managed by commands
-      #white-list = true;
+      # White list is managed by commands,
+      # so I need to enable it but not specify
+      # players to whitelist.
+      white-list = true;
 
       level-seed = "2430";
 
