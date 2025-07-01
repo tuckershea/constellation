@@ -52,6 +52,8 @@
     };
   };
 
+  users.users.nginx.extraGroups = [ "minecraft" ];
+
   services.nginx.enable = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.nginx.virtualHosts."mc.abte.ch" = {
@@ -60,6 +62,15 @@
     locations."/" = {
       # hardcoded to dynmap
       proxyPass = "http://127.0.0.1:8123";
+    };
+
+    locations."~ ^/tiles/" = {
+      #root = "/srv/minecraft/abtechminecraft/dynmap/web/tiles";
+      root = "/srv/minecraft/abtechminecraft/dynmap/web";
+      extraConfig = ''
+        expires 0;
+        add_header Cache-Control private;
+      '';
     };
   };
 
