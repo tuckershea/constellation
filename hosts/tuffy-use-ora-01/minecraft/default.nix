@@ -73,10 +73,36 @@
   
   services.minecraft-servers.enable = true;
   services.minecraft-servers.eula = true;
-  services.minecraft-servers.servers.abtechminecraft = {
+  services.minecraft-servers.servers.abtechminecraft =
+  let
+    # we'll need this in a few places
+    Distant-Horizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/Mt9bDAs6/DistantHorizons-neoforge-fabric-2.3.2-b-1.21.5.jar"; sha512 = "e17d845f5ddb71a9ca644875a02b845e045bb5c7e72429e120271636936a816b416bb4ba13789de18c3af6a1a5f5b7ed5dbe07326c60d5c49534a382310dab1f"; };
+  in {
     enable = true;
-    package = pkgs.fabricServers.fabric-1_21_5;
-    path = [ pkgs.sqlite ];
+    package = let
+      # Distant Horizons uses sqlite-jdbc which needs to load an SQLite
+      # library. Normally it would just unpack it into /tmp and then load,
+      # it, but this is not possible on my machines because world-writeable
+      # areas are noexec. Instead, I have to extract it myself and make
+      # it accessible to Distant Horizons.
+      #
+      # While sqlite-jdbc provides a few options
+      # https://github.com/xerial/sqlite-jdbc/blob/master/USAGE.md
+      # I did not have success with them. I did find that it checks
+      # java.library.path, and setting it works.
+      #
+      # this is specialized for aarch64-linux!
+      libsqlitejdbc = pkgs.stdenv.mkDerivation {
+        name = "distant-horizons-jar-contents";
+        buildInputs = [ pkgs.unzip ];  
+        buildCommand = ''
+          mkdir $out
+          unzip -j ${Distant-Horizons} dh_sqlite/native/Linux/aarch64/libsqlitejdbc.so -d $out
+        '';
+      };
+    in
+      pkgs.fabricServers.fabric-1_21_5.override({ extraJavaArgs="-Djava.library.path=${libsqlitejdbc}"; });
+
     openFirewall = false;
     enableReload = true;
 
@@ -110,7 +136,7 @@
 
       mods = pkgs.linkFarmFromDrvs "mods" (
         builtins.attrValues {
-          Distant-Horizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/Mt9bDAs6/DistantHorizons-neoforge-fabric-2.3.2-b-1.21.5.jar"; sha512 = "e17d845f5ddb71a9ca644875a02b845e045bb5c7e72429e120271636936a816b416bb4ba13789de18c3af6a1a5f5b7ed5dbe07326c60d5c49534a382310dab1f"; };
+          inherit Distant-Horizons;
 
           Dynmap = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/fRQREgAc/versions/sXDq1ybz/Dynmap-3.7-beta-9-fabric-1.21.5.jar"; sha512 = "811fab928cf61544b982f5b530c5bbd22dbc55560e813d07bf070a9368dc57cfaea57c70709bce88b80dba825545a1bee282ddd6e669def04d237a214c556751"; };
 

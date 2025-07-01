@@ -87,10 +87,7 @@
           "defaults"
           "nodev"
           "nosuid"
-          # Minecraft mods write executables here
-          # e.g. sqlite shared library. This is unfortunate
-          # and I hope to find a way around it.
-#          "noexec"
+          "noexec"
           "mode=1777"
         ];
       };
