@@ -24,10 +24,10 @@
   environment.persistence."/big-persist" = {
     directories = [
       {
-        directory = "/srv/minecraft/abtechminecraft/dynmap/web/tiles";
+        directory = "/srv/www/mc.abte.ch";
         user = "minecraft";
-        group = "minecraft";
-        mode = "0700";
+        group = "nginx";
+        mode = "2750";
       }
     ];
   };
@@ -52,21 +52,13 @@
     };
   };
 
-  users.users.nginx.extraGroups = [ "minecraft" ];
-
   services.nginx.enable = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.nginx.virtualHosts."mc.abte.ch" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      # hardcoded to dynmap
-      proxyPass = "http://127.0.0.1:8123";
-    };
-
-    locations."~ ^/tiles/" = {
-      #root = "/srv/minecraft/abtechminecraft/dynmap/web/tiles";
-      root = "/srv/minecraft/abtechminecraft/dynmap/web";
+      root = "/srv/www/mc.abte.ch";
       extraConfig = ''
         expires 0;
         add_header Cache-Control private;
@@ -114,6 +106,8 @@
     jvmOpts = "-Xms4G -Xmx20G";
 
     symlinks = {
+      "dynmap/configuration.txt" = ./dynmap_configuration.txt;
+
       mods = pkgs.linkFarmFromDrvs "mods" (
         builtins.attrValues {
           Distant-Horizons = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/uCdwusMi/versions/Mt9bDAs6/DistantHorizons-neoforge-fabric-2.3.2-b-1.21.5.jar"; sha512 = "e17d845f5ddb71a9ca644875a02b845e045bb5c7e72429e120271636936a816b416bb4ba13789de18c3af6a1a5f5b7ed5dbe07326c60d5c49534a382310dab1f"; };
