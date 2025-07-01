@@ -10,7 +10,7 @@
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
-    ./minecraft.nix
+    ./minecraft
     ./secrets
     ./tailscale
 
