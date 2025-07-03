@@ -54,6 +54,7 @@
     pre-commit
     sd
     tailscale
+    tree
     wget
 
     # Languages and tooling
