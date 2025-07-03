@@ -162,6 +162,7 @@
           Crops-Love-Rain = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/cRci7UZp/versions/cOzf5FGy/Crops-Love-Rain-2.4.2.jar"; sha512 = "0a334c30ef11bc126ae6dc58225a81b00d5f4e6cdbb0d4242e6929935b6eb65d5a9a7ddef435d05b0b691d1beba74f0cfbad6c63ec79e8518f4fcb3455fc8aa8"; };
           Boids = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/2OckSy74/versions/aiZEd0aD/Boids-1.2.3.jar"; sha512 = "cc4bb075fe7b6263ea16d0c6deaa0ec3ae98d46861f50444406cc3ca9e1cc5a069833bc86007086217240a7cf8664e45bcc99fd4bebc1f5acf7093aaa15922c2"; };
           Easy-Elytra-Takeoff = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/3hqwGCUB/versions/3dwFGkOm/easyelytratakeoff-1.21.5-4.5.jar"; sha512 = "14da27c2d273bf537c26fc6c7a39d1fdfd67dcab21736b5a0760c9aacee434e299c7bae89c394ad42876ddde9bed757380573f8d1753d1cedff56a1c92849364"; };
+          Rebalanced-Piglin-Bartering = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/fffp1OgS/versions/jp4wjXQs/purpurpacks-rebalanced-piglin-bartering-4.4.jar"; sha512 = "73f77745e0fc3f913f075f6829db00ecbe99d611a61be0ed4e04686ac8b66af855834aa6ddc3593f4d974e0f4edc54c957fe44cc96729a0feaf09458e61ef9ce"; };
 
           # modlist pretty much ripped from Simply Optimized
           BadOptimizations = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/g96Z4WVZ/versions/VLDb95oX/BadOptimizations-2.2.3-1.21.2-21.6.jar"; sha512 = "3cab72f026d9058380c3c71c71eb8bc0b2c1a7cbcbaf6d95ac65f6177b9f02de507510fe05633824da50b1143778ddf9bb2b4170f11c2f0f4eb96018ef3e1aa8"; };
