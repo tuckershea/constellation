@@ -64,6 +64,10 @@
     typst
     uv
     verilator
+
+    # Helix
+    python313Packages.python-lsp-server
+    python313Packages.python-lsp-ruff
   ];
 
 #  programs.rbenv.enable = true;
