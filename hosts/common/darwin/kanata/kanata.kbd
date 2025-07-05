@@ -128,7 +128,7 @@
     (l)         (multi @supr l)         ;; aerospace
     (lsft l)    (multi @dupr l)         ;; aerospace
     (m)         nop0
-    (n)         nop0
+    (n)         (layer-switch numpad)
     (o)         nop0
     (p)         nop0
     (q)         nop0
@@ -202,4 +202,14 @@
     Multiplexer (macro S-m u l t i p l e x e r spc)
 )
 
+
+
+(deflayer numpad
+    esc    _    _    _    _    _    _    _    _    _    _    _    _
+    _    a    b    c    d    e    f    g    h    i    j    _    _    bspc
+    tab    (layer-switch base)    _    _    _    _    _    7    8    9    _    _    _    _
+    _    _    _    _    _    _    _    4    5    6    ret tab    _
+    _    _    _    _    _    _    _     1    2    3 3   _    _
+    _    _    _    _              0              0    _
+)
 
