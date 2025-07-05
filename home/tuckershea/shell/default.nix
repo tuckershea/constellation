@@ -68,6 +68,9 @@
     # Helix
     python313Packages.python-lsp-server
     python313Packages.python-lsp-ruff
+
+    beamMinimal28Packages.elixir
+    beamMinimal28Packages.elixir-ls
   ];
 
 #  programs.rbenv.enable = true;
