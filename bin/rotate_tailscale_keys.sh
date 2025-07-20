@@ -21,6 +21,7 @@ HOSTS=(
   "tuffy-use-ora-01|tag:public|false"
   "vic|tag:private|false"
   "spencer|tag:private,tag:private-keycloak|false"
+  "makoto|tag:private|false"
 )
 
 for host_config in "${HOSTS[@]}"; do
