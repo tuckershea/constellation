@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./alacritty.nix
     ./surfingkeys
@@ -6,9 +10,11 @@
 
   programs.kitty = {
     enable = true;
+    shellIntegration.enableFishIntegration = true;
     font.name = "JetBrainsMono Nerd Font Mono";
     themeFile = "Dracula";
     settings = {
+      shell = "${pkgs.fish}/bin/fish";
       update_check_interval = 0;
       scrollback_lines = 10000;
       enable_audio_bell = "no";

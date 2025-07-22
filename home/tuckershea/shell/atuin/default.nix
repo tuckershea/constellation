@@ -10,6 +10,7 @@ in
 {
   programs.atuin = {
     enable = true;
+    enableFishIntegration = true;
 
     daemon.enable = true;
 
@@ -28,11 +29,6 @@ in
       keymap_mode = "vim-insert";
     };
   };
-
-  # compatibility with zsh-vi-mode
-  programs.zsh.initContent = ''
-    zvm_after_init_commands+=('eval "$(${cfg.package}/bin/atuin init zsh ${flagsStr})"')
-  '';
 
   sops.secrets.atuin_key = {
     sopsFile = ./atuin_key.+tuckershea.enc;
