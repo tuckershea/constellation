@@ -11,7 +11,7 @@ in {
         (lib.mkIf stdenv.isDarwin "/Users/tuckershea")
         (lib.mkIf stdenv.isLinux "/home/tuckershea")
       ];
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       description = "Tucker Shea";
 
       openssh.authorizedKeys.keyFiles = [
@@ -23,6 +23,8 @@ in {
       isNormalUser = true;
       extraGroups = [ "wheel" "nixusers" "sshusers" ];
     };
+
+  programs.fish.enable = true;  # configured in H-M
 
   users.groups.tuckershea = {};
 }

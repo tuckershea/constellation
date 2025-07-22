@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./atuin
-    ./fzf.nix
     ./git.nix
     ./jj
     ./neovim.nix
@@ -14,8 +13,21 @@
     ./ripgrep.nix
     ./secrets.nix
     ./tmux
-    ./zsh
   ];
+
+  programs.fish = {
+    enable = true;
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "tide";
+        inherit (tide) src;
+      }
+    ];
+  };
+
+  home.activation.configure-tide = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time=No --rainbow_prompt_separators=Slanted --powerline_prompt_heads=Slanted --powerline_prompt_tails=Slanted --powerline_prompt_style='Two lines, character' --prompt_connection=Solid --powerline_right_prompt_frame=No --prompt_spacing=Compact --icons='Few icons' --transient=No; set tide_character_icon '$'"
+  '';
 
   home = {
     username = "tuckershea";
@@ -23,7 +35,7 @@
     stateVersion = lib.mkDefault "23.11";
 
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
     };
   };
 
@@ -53,26 +65,25 @@
     verilator
   ];
 
-  programs.rbenv.enable = true;
-  programs.rbenv.enableZshIntegration = true;
-  programs.rbenv.plugins = 
-        [
-          {
-            name = "ruby-build";
-            src = pkgs.fetchFromGitHub {
-              owner = "rbenv";
-              repo = "ruby-build";
-              rev = "v20250205";
-              hash = "sha256-ZPULUkGkt7FkBTWygiky+QvMJPcslhWw3UPJ6XywfSU=";
-            };
-          }
-        ];
+#  programs.rbenv.enable = true;
+#  programs.rbenv.enableFishIntegration = true;
+#  programs.rbenv.plugins = 
+#        [
+#          {
+#            name = "ruby-build";
+#            src = pkgs.fetchFromGitHub {
+#              owner = "rbenv";
+#              repo = "ruby-build";
+#              rev = "v20250205";
+#              hash = "sha256-ZPULUkGkt7FkBTWygiky+QvMJPcslhWw3UPJ6XywfSU=";
+#            };
+#          }
+#        ];
   
-  programs.direnv.enable = true;
-  programs.direnv.enableZshIntegration = true;
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings = {
       theme = "dracula";
       editor = {
