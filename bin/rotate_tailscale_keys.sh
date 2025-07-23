@@ -20,7 +20,7 @@ HOSTS=(
   "roland|tag:private|true"
   "tuffy-use-ora-01|tag:public|false"
   "vic|tag:private|false"
-  "spencer|tag:private,tag:private-keycloak|false"
+  "spencer|tag:private,tag:private-keycloak,tag:private-smtp|false"
   "makoto|tag:private|false"
 )
 

@@ -7,18 +7,23 @@
 with lib; let
   cfg = config.services.mailrise;
 in {
-  options = {
-    services.mailrise.enable = mkEnableOption "Whether to enable the mailrise server.";
+  options.services.mailrise = {
+    enable = mkEnableOption "Whether to enable the mailrise server.";
 
-    services.mailrise.package = mkOption {
+    package = mkOption {
       type = types.package;
       default = pkgs.callPackage ../../pkgs/mailrise.nix {};
       description = "The mailrise package to use.";
     };
 
-    services.mailrise.configFile = mkOption {
+    envFile = mkOption {
       type = types.path;
-      description = "A file with YAML configuration for mailrise. Consider that this file may contain secrets.";
+      description = "Environment variables for mailrise. Useful for secret URLs.";
+    };
+
+    configFile = mkOption {
+      type = types.path;
+      description = "YAML configuration for mailrise.";
     };
   };
 
@@ -29,7 +34,12 @@ in {
       wantedBy = ["multi-user.target"];
 
       serviceConfig.Type = "exec";
-      script = "${cfg.package}/bin/mailrise ${cfg.configFile}";
+      script = ''
+        set -o allexport
+        source ${cfg.envFile}
+        set +o allexport
+        ${cfg.package}/bin/mailrise ${cfg.configFile}
+      '';
     };
   };
 }

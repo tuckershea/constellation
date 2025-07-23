@@ -6,6 +6,7 @@
   imports = [
     ./auto-upgrade.nix
     ./cis-hardening.nix
+    ./mail.nix
     ./network.nix
     ./nix.nix
     ./no-wait-online.nix # mitigate NetworkManager Wait-Online failure
