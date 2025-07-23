@@ -12,7 +12,6 @@
     ./docker.nix
     ./hardware-configuration.nix
     ./keycloak
-    ./mailrise.nix
     ./minecraft.nix
     ./secrets
     ./tailscale

@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ./immich.nix
     ./keycloak
-    ./mailrise.nix
+    ./mailrise
     ./paperless.nix
     ./secrets
     ./tailscale
@@ -59,6 +59,20 @@
   ];
 
   boot.initrd.systemd.enable = true;
+
+  # This is really just an easy way
+  # to receive on port 25 (smtp) instead
+  # of port 8025 (mailrise)
+  services.opensmtpd = {
+    enable = true;
+    setSendmail = false;  # common/nixos/mail.nix prefers msmtp
+    serverConfiguration = ''
+      # forward all mail to mailrise
+      listen on 0.0.0.0 port 25
+      action "relay" relay host "localhost:8025"
+      match from any for any action "relay"
+    '';
+  };
 
   environment.persistence."/persist" = {
     hideMounts = true;
