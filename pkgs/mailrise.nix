@@ -17,6 +17,14 @@ pkgs.python3Packages.buildPythonApplication rec {
     pyyaml
   ];
 
+  propagatedBuildInputs = with pkgs.python3Packages; [
+    setuptools-scm
+  ];
+
+  pyproject = true;
+  build-system = [ pkgs.python3Packages.setuptools ];
 
   pythonImportsCheck = [ "mailrise" ];
+
+  dontCheckRuntimeDeps = true;
 }
