@@ -137,4 +137,7 @@
       yaml-language-server
     ];
   };
+
+  programs.zoxide.enable = true;
+  programs.zoxide.enableFishIntegration = true;
 }
