@@ -22,6 +22,10 @@
         inherit (tide) src;
       }
     ];
+
+    interactiveShellInit = ''
+      fish_add_path ~/.cargo/bin
+    '';
   };
 
   home.activation.configure-tide = lib.hm.dag.entryAfter ["writeBoundary"] ''
