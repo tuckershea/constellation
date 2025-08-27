@@ -8,7 +8,6 @@
     ./atuin
     ./git.nix
     ./jj
-    ./neovim.nix
     ./nix-index.nix
     ./ripgrep.nix
     ./secrets.nix

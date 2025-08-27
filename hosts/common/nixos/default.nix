@@ -32,7 +32,6 @@
   services.nginx = {
     # Nice defaults
     recommendedTlsSettings = true;
-    recommendedZstdSettings = true;
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedUwsgiSettings = true;

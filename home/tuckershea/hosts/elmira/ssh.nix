@@ -1,7 +1,7 @@
 { config, inputs, lib, ... }: {
   programs.ssh = {
     enable = true;
-    serverAliveInterval = 30;
+    enableDefaultConfig = false;
 
     includes = [
       "./config.d/*"
@@ -9,6 +9,15 @@
 
     matchBlocks = {
       "*" = {
+        serverAliveInterval = 30;
+        forwardAgent = false;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+
         identityFile = ["~/.ssh/id_tuckershea_elmira.pub"];
         extraOptions = {
           # Use 1password for auth on elmira (darwin)

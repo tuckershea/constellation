@@ -5,7 +5,6 @@
 }: {
   programs.git = {
     enable = true;
-    delta.enable = true;
     hooks = {
       # pre-commit = ./../pre-commit-script;
     };
@@ -20,12 +19,17 @@
       key = lib.removeSuffix "\n" (builtins.readFile ../../../resources/publickeys/id_norepercussions_github.pub);
       signByDefault = true;
     };
-    userEmail = "tucker@tuckershea.com";
-    userName = "NoRePercussions";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "tucker@tuckershea.com";
+        name = "NoRePercussions";
+      };
       gpg.format = "ssh";
       core.autocrlf = "input";
       init.defaultBranch = "main";
     };
   };
+
+  programs.delta.enable = true;
+  programs.delta.enableGitIntegration = true;
 }

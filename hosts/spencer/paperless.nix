@@ -1,8 +1,12 @@
 {
   config,
+  outputs,
   ...
 }:
 {
+  # Celery build is broken in 25.11
+  nixpkgs.overlays = [ outputs.overlays.celery ];
+
   services.paperless = {
     enable = true;
     settings = {
