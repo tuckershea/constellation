@@ -52,8 +52,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 0
-inner.vertical =   0
+inner.horizontal = 4
+inner.vertical =   4
 outer.left =       0
 outer.bottom =     0
 outer.top =        0
@@ -76,20 +76,8 @@ outer.right =      0
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-    alt-enter = '''exec-and-forget osascript -e '
-    on is_running(appName)
-    	tell application "System Events" to (name of processes) contains appName
-    end is_running
-
-    if not is_running(".kitty-wrapped") then
-    	display dialog "here"
-    	tell application "kitty" to activate
-    else
-    	tell application "System Events" to tell process ".kitty-wrapped"
-    		click menu item "New OS Window" of menu 1 of menu bar item "Shell" of menu bar 1
-    	end tell
-    end if
-    '''
+    #alt-enter = '''exec-and-forget osascript -e 'display notification "hi"' '''
+    alt-enter = '''exec-and-forget kitten @ --to unix:$(echo /tmp/mykitty-*) launch --type=os-window --cwd=current'''
 
     # i3 wraps focus by default
     alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
