@@ -28,7 +28,7 @@
   nix.settings.allowed-users = [ "@nixusers" ];
 
   environment.memoryAllocator.provider = "scudo";
-  environment.variables.SCUDO_OPTIONS = "ZeroContents=1";
+  environment.variables.SCUDO_OPTIONS = "zero_contents=true";
 
   security.lockKernelModules = true;
 
