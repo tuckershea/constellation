@@ -117,7 +117,7 @@ jobs:
           echo "::set-output name=security::$OUTPUT_SECURITY"
 
       - name: Comment report in pr
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: ".#top.${{ matrix.target }}"
           message: |
